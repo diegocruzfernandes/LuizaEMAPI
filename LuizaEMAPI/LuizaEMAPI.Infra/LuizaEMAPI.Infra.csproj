@@ -140,6 +140,7 @@
     <Compile Include="Repositories\DepartmentRepository.cs" />
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="Services\EmailService.cs" />
     <Compile Include="Transactions\IUow.cs" />
     <Compile Include="Transactions\Uow.cs" />
   </ItemGroup>

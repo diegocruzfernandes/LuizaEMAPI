@@ -114,6 +114,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Handler\DepartmentCommandHandler.cs" />
+    <Compile Include="Commands\Handler\UserCommandHandler.cs" />
+    <Compile Include="Commands\Inputs\DepartmentCommand.cs" />
+    <Compile Include="Commands\Results\DepartmentCommandResult.cs" />
+    <Compile Include="Commands\Shared\ICommand.cs" />
+    <Compile Include="Commands\Shared\ICommandHandler.cs" />
+    <Compile Include="Commands\Shared\ICommandResult.cs" />
     <Compile Include="Common\Entity.cs" />
     <Compile Include="Common\EPermission.cs" />
     <Compile Include="Common\ValidationPassword.cs" />
@@ -129,6 +136,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

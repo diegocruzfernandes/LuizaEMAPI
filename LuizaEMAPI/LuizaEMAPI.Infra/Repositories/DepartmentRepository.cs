@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using LuizaEMAPI.Domain.Entities;
 using LuizaEMAPI.Infra.Contexts;
+using LuizaEMAPI.Domain.Commands.Handler;
+using LuizaEMAPI.Domain.Commands.Inputs;
 
 namespace LuizaEMAPI.Infra.Repositories
 {
@@ -16,6 +18,25 @@ namespace LuizaEMAPI.Infra.Repositories
         public DepartmentRepository(LuizaEMAPIDataContext context)
         {
             _context = context;
+        }
+
+        public bool DepartmentExists(string name)
+        {
+            return _context.Departments.Any(x => x.Name == name);
+        }
+
+        public IEnumerable<DepartmentCommand> Get()
+        {
+            return _context
+                .Departments
+                .Select(x => new DepartmentCommand
+                {
+                    Name = x.Name.ToString(),
+                    Description = x.Description.ToString(),
+                    Active = x.Active
+                })
+                .OrderBy(x => x.Name)
+                .ToList();
         }
 
         public Department Get(Guid id)

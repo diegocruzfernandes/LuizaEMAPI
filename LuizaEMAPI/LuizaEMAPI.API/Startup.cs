@@ -7,31 +7,46 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using LuizaEMAPI.Infra.Contexts;
+using LuizaEMAPI.Infra.Repositories;
+using LuizaEMAPI.Domain.Repositories;
+using LuizaEMAPI.Infra.Transactions;
+using LuizaEMAPI.Domain.Commands.Handler;
 
 namespace LuizaEMAPI.API
 {
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+            services.AddCors();
+
+            //services.AddTransient - new instance
+            //services.AddScoped - singleton
+
+            services.AddScoped<LuizaEMAPIDataContext, LuizaEMAPIDataContext>();
+            services.AddTransient<IUow, Uow>();
+            services.AddTransient<IDepartmentRepository, DepartmentRepository>();
+
+            services.AddTransient<DepartmentCommandHandler, DepartmentCommandHandler>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+       public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
 
-            if (env.IsDevelopment())
-            {
+            if (env.IsDevelopment())          
                 app.UseDeveloperExceptionPage();
-            }
 
-            app.Run(async (context) =>
+            app.UseCors(x =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                x.AllowAnyHeader();
+                x.AllowAnyMethod();
+                x.AllowAnyOrigin();
             });
+            app.UseMvc();
+
         }
     }
 }

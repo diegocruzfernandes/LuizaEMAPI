@@ -11,6 +11,11 @@ namespace LuizaEMAPI.Infra.Transactions
     {
         private readonly LuizaEMAPIDataContext _context;
 
+        public Uow(LuizaEMAPIDataContext context)
+        {
+            _context = context;
+        }
+
         public void Commit()
         {
             _context.SaveChanges();
