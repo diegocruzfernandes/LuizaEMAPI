@@ -10,6 +10,8 @@ namespace LuizaEMAPI.Domain.Entities
 {
     public class Employee : Entity
     {
+        protected Employee() { }
+
         public Employee(string firstName, string lastName, string email, Department department, DateTime birthDate, bool active)
         {
             FirstName = firstName;

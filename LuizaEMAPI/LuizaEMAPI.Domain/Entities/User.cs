@@ -10,6 +10,8 @@ namespace LuizaEMAPI.Domain.Entities
 {
     public class User : Entity, IValidatable
     {
+        protected User() { }
+
         public User(string name, string email, string password, EPermission permission, bool active)
         {
             Name = name;

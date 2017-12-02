@@ -124,10 +124,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contexts\LuizaEMAPIDataContext.cs" />
+    <Compile Include="Mapping\DepartmentMap.cs" />
+    <Compile Include="Mapping\EmployeeMap.cs" />
     <Compile Include="Mapping\UserMap.cs" />
     <Compile Include="Migrations\201712020202441_v1.cs" />
     <Compile Include="Migrations\201712020202441_v1.Designer.cs">
       <DependentUpon>201712020202441_v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712021334594_v2.cs" />
+    <Compile Include="Migrations\201712021334594_v2.Designer.cs">
+      <DependentUpon>201712021334594_v2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -145,6 +151,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712020202441_v1.resx">
       <DependentUpon>201712020202441_v1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712021334594_v2.resx">
+      <DependentUpon>201712021334594_v2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

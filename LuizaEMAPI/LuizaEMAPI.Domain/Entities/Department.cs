@@ -11,6 +11,8 @@ namespace LuizaEMAPI.Domain.Entities
 {
     public class Department : Entity
     {
+        protected Department(){ }
+
         public Department(string name, string description, bool active)
         {
             Name = name;
