@@ -44,7 +44,7 @@ namespace LuizaEMAPI.Domain.Entities
             AddNotifications(new ValidationContract()
                  .HasMinLen(Name, 3, "Nome", "O  nome não pode ser menor que 3 caracteres")
                  .HasMaxLen(Name, 60, "Nome", "O  nome não pode ser maior que 60 caracteres")
-                 .HasMaxLen(Name, 200, "Description", "A descrição não pode ser maior que 200 caracteres")
+                 .HasMaxLen(Description, 200, "Description", "A descrição não pode ser maior que 200 caracteres")
                 );
         }
     }

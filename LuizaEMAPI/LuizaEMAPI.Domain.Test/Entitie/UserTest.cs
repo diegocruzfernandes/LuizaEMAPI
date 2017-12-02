@@ -16,15 +16,15 @@ namespace LuizaEMAPI.Domain.Test.Entitie
 
 
         [TestMethod]
-        [TestCategory("User - New User")]
-        public void CreateNewUser()
+        [TestCategory("User")]
+        public void CreateObjectNewUser()
         {
             User user = new User(Name, Email, Password, Permission, true);
             Assert.IsTrue(user.Valid);
         }
 
         [TestMethod]
-        [TestCategory("User - New User")]
+        [TestCategory("User")]
         public void GivenAnInvalidNameShouldReturnNotification()
         {
             //Dont empty
@@ -43,7 +43,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         }
 
         [TestMethod]
-        [TestCategory("User - New User")]
+        [TestCategory("User")]
         public void GivenAnInvalidEmailShouldReturnNotification()
         {
 
@@ -65,7 +65,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         }
 
         [TestMethod]
-        [TestCategory("User - New User")]
+        [TestCategory("User")]
         public void GivenAnInvalidPasswordShouldReturnNotification()
         {
             //is not null or empty
@@ -82,7 +82,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         }
 
         [TestMethod]
-        [TestCategory("User - Change User Data")]
+        [TestCategory("User")]
         public void ChangeAnInvalidEmaildShouldReturnNotification()
         {
             //is not null or empty
@@ -103,7 +103,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         }
 
         [TestMethod]
-        [TestCategory("User - Change User Data")]
+        [TestCategory("User")]
         public void ValidationPasswordValue()
         {
             User user = new User(Name, Email, Password, Permission, true);
@@ -114,7 +114,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         }
 
         [TestMethod]
-        [TestCategory("User - Change User Data")]
+        [TestCategory("User")]
         public void ChangeActivationUser()
         {
             User user = new User(Name, Email, Password, Permission, true);
@@ -125,7 +125,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         }
 
         [TestMethod]
-        [TestCategory("User - Change User Data")]
+        [TestCategory("User")]
         public void ChangeName()
         {
             User user = new User(Name, Email, Password, Permission, true);
@@ -137,7 +137,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         }
 
         [TestMethod]
-        [TestCategory("User - Change User Data")]
+        [TestCategory("User")]
         public void AuthenticateValidation()
         {
             User user = new User(Name, Email, Password, Permission, true);
