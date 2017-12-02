@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace LuizaEMAPI.Domain.Repositories
 {
-    public interface IUserRepository
+    public interface IDepartmentRepository
     {
-        User Get(Guid id);
-        User GetByEmail(string email);
-        void Save(User user);
-        void Update(User user);
-        bool UserExists(User user);
+        Department Get(Guid id);
+        Department GetByName(string name);
+        void Save(Department depart);
+        void Update(Department depart);
     }
 }
