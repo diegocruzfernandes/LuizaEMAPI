@@ -1,5 +1,5 @@
 ﻿using FluentValidator;
-using LuizaEMAPI.Domain.Commands.Inputs;
+using LuizaEMAPI.Domain.Commands.DepartmentCommand;
 using LuizaEMAPI.Domain.Commands.Results;
 using LuizaEMAPI.Domain.Commands.Shared;
 using LuizaEMAPI.Domain.Entities;
@@ -17,7 +17,7 @@ namespace LuizaEMAPI.Domain.Commands.Handler
             _repository = repository;
         }        
 
-        public ICommandResult Handler(DepartmentCommand command)
+        public ICommandResult Handler(CreateDepartmentCommand command)
         {
             //First - Department exist?
             if (_repository.DepartmentExists(command.Name))

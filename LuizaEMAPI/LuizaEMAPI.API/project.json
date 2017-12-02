@@ -1,4 +1,4 @@
-﻿{
+{
   "dependencies": {
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
@@ -15,6 +15,9 @@
   "frameworks": {
     "net461": {
       "dependencies": {
+        "LuizaEMAPI.AppService": {
+          "target": "project"
+        },
         "LuizaEMAPI.Domain": {
           "target": "project"
         },

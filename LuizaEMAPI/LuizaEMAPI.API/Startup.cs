@@ -12,6 +12,8 @@ using LuizaEMAPI.Infra.Repositories;
 using LuizaEMAPI.Domain.Repositories;
 using LuizaEMAPI.Infra.Transactions;
 using LuizaEMAPI.Domain.Commands.Handler;
+using LuizaEMAPI.Domain.Services;
+using LuizaEMAPI.AppService;
 
 namespace LuizaEMAPI.API
 {
@@ -27,9 +29,10 @@ namespace LuizaEMAPI.API
 
             services.AddScoped<LuizaEMAPIDataContext, LuizaEMAPIDataContext>();
             services.AddTransient<IUow, Uow>();
+            services.AddTransient<IDepartmentAppService, DepartmentAppService>();
             services.AddTransient<IDepartmentRepository, DepartmentRepository>();
 
-            services.AddTransient<DepartmentCommandHandler, DepartmentCommandHandler>();
+            
         }
 
        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)

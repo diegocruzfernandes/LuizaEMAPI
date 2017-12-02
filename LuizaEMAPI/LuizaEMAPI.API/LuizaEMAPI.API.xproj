@@ -20,6 +20,7 @@
     <DnxInvisibleContent Include=".bowerrc" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LuizaEMAPI.AppService\LuizaEMAPI.AppService.csproj" />
     <ProjectReference Include="..\LuizaEMAPI.Domain\LuizaEMAPI.Domain.csproj" />
     <ProjectReference Include="..\LuizaEMAPI.Infra\LuizaEMAPI.Infra.csproj" />
   </ItemGroup>

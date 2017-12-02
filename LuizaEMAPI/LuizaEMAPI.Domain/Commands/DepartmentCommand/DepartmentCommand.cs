@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LuizaEMAPI.Domain.Commands.Inputs
+namespace LuizaEMAPI.Domain.Commands.DepartmentCommand
 {
     public class DepartmentCommand
     {

@@ -2,12 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LuizaEMAPI.Domain.Entities;
 using LuizaEMAPI.Infra.Contexts;
-using LuizaEMAPI.Domain.Commands.Handler;
-using LuizaEMAPI.Domain.Commands.Inputs;
+using LuizaEMAPI.Domain.Commands.DepartmentCommand;
 
 namespace LuizaEMAPI.Infra.Repositories
 {
@@ -18,7 +15,7 @@ namespace LuizaEMAPI.Infra.Repositories
         public DepartmentRepository(LuizaEMAPIDataContext context)
         {
             _context = context;
-        }
+        }    
 
         public bool DepartmentExists(string name)
         {
@@ -29,8 +26,7 @@ namespace LuizaEMAPI.Infra.Repositories
         {
             return _context
                 .Departments
-                .Select(x => new DepartmentCommand
-                {
+                .Select(x => new DepartmentCommand {
                     Name = x.Name.ToString(),
                     Description = x.Description.ToString(),
                     Active = x.Active
@@ -57,6 +53,27 @@ namespace LuizaEMAPI.Infra.Repositories
         public void Update(Department depart)
         {
             _context.Entry(depart).State = System.Data.Entity.EntityState.Modified;
+        }
+
+        public void Delete(Department depart)
+        {
+            _context.Entry(depart).State = System.Data.Entity.EntityState.Deleted;
+        }
+
+        public IEnumerable<DepartmentCommand> Get(int skip, int take)
+        {
+            return _context
+                .Departments
+                .Select(x => new DepartmentCommand
+                {
+                    Name = x.Name.ToString(),
+                    Description = x.Description.ToString(),
+                    Active = x.Active
+                })
+                .OrderBy(x => x.Name)
+                .Skip(skip)
+                .Take(take)
+                .ToList();
         }
     }
 }
