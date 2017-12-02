@@ -130,6 +130,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Entitie\DepartmentTest.cs" />
+    <Compile Include="Entitie\EmployeeTest.cs" />
     <Compile Include="Entitie\UserTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

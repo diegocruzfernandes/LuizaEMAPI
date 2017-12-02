@@ -13,7 +13,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
 
         [TestMethod]
         [TestCategory("Department")]
-        public void CreateObjectNewDepartment()
+        public void CreateNewInstanceDepartment()
         {
             Department depart = new Department(Name, Description, true);
             Assert.IsTrue(depart.Valid);
@@ -27,11 +27,11 @@ namespace LuizaEMAPI.Domain.Test.Entitie
             Department depart = new Department("", Description, true);
             Assert.IsFalse(depart.Valid);
 
-            //lenght > 3
+            //length > 3
             Department depart2 = new Department("ad", Description, true);
             Assert.IsFalse(depart2.Valid);
 
-            //lenght < 60
+            //length < 60
             Department depart3 = new Department("1234567890123456789012345678901234567890123456789012345678901", Description, true);
             Assert.IsFalse(depart.Valid);
         }
@@ -40,6 +40,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         [TestCategory("Department")]
         public void GivenAnInvalidDescriptionShouldReturnNotification()
         {
+            //length < 200
             Department depart = new Department(Name, "123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901", true);
             Assert.IsFalse(depart.Valid);
         }
@@ -60,7 +61,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
 
         [TestMethod]
         [TestCategory("Department")]
-        public void ChangeNameDepartment()
+        public void ChangeNameDepartmentCompareNewWithOld()
         {
             Department depart = new Department(Name, Description, true);
 
@@ -72,7 +73,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
 
         [TestMethod]
         [TestCategory("Department")]
-        public void ChangeDescriptionDepartment()
+        public void ChangeDescriptionDepartmentCompareNewWithOld()
         {
             Department depart = new Department(Name, Description, true);
 
