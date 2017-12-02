@@ -14,9 +14,14 @@ namespace LuizaEMAPI.Infra.Mapping
         {
             ToTable("User");
             HasKey(x => x.Id);
-            Property(x = x.);
+            Property(x => x.Name).IsRequired().HasMaxLength(60).IsFixedLength();
+            Property(x => x.Email).IsRequired().HasMaxLength(50);
+            Property(x => x.Password).IsRequired().HasMaxLength(32);
+            Property(x => x.Permission);
+            Property(x => x.Active);
+     
 
-            // Aula 13 - 32min.... criando os map
+
         }
     }
 }
