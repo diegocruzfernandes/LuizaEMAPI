@@ -31,8 +31,6 @@ namespace LuizaEMAPI.AppService
             return depart;
         }
 
-
-
         public Department Get(Guid id)
         {
             var depart = _repository.Get(id);

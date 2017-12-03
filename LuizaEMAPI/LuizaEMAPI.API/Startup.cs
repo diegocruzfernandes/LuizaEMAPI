@@ -41,6 +41,7 @@ namespace LuizaEMAPI.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //Block all Routers
             services.AddMvc(config => 
             { 
                 var policy = new AuthorizationPolicyBuilder()
@@ -48,6 +49,7 @@ namespace LuizaEMAPI.API
                     .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
             });
+
             services.AddCors();
 
             services.AddAuthorization(options =>
@@ -76,8 +78,9 @@ namespace LuizaEMAPI.API
 
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IUserAppService, UserAppService>();
-            
 
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddTransient<IEmployeeAppService, EmployeeAppService>(); 
             
         }
 
@@ -106,7 +109,7 @@ namespace LuizaEMAPI.API
             };
 
             app.UseJwtBearerAuthentication(new JwtBearerOptions
-            {
+            {   //this allown without Server Authenticate
                 AutomaticAuthenticate = true,
                 AutomaticChallenge = true,
                 TokenValidationParameters = tokenValidationParameters

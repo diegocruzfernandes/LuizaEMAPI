@@ -21,7 +21,7 @@ namespace LuizaEMAPI.API.Controllers
 
         [HttpPost]
         [Route("v1/user")]
-        [AllowAnonymous]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand command)
         {
             if (command == null)
@@ -33,7 +33,6 @@ namespace LuizaEMAPI.API.Controllers
 
         [HttpGet]
         [Route("v1/user")]
-        [AllowAnonymous]
         public async Task<IActionResult> Get()
         {
             var result = _service.Get();
@@ -43,7 +42,6 @@ namespace LuizaEMAPI.API.Controllers
 
         [HttpGet]
         [Route("v1/user/{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Get(Guid id)
         {
             var result = _service.Get(id);
@@ -52,7 +50,6 @@ namespace LuizaEMAPI.API.Controllers
 
         [HttpDelete]
         [Route("v1/user/{id}")]
-        [AllowAnonymous]
         public async Task<IActionResult> Delete(Guid id)
         {
             var result = _service.Delete(id);
@@ -61,7 +58,6 @@ namespace LuizaEMAPI.API.Controllers
 
         [HttpPut]
         [Route("v1/user")]
-        [AllowAnonymous]
         public async Task<IActionResult> Update([FromBody] EditUserCommand command)
         {
             var result = _service.Update(command);
