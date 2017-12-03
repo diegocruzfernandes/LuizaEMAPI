@@ -114,19 +114,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\DepartmentCommand\CreateDepartmentCommand.cs" />
+    <Compile Include="Commands\DepartmentCommand\DeleteDepartmentCommand.cs" />
+    <Compile Include="Commands\DepartmentCommand\DepartmentCommand.cs" />
+    <Compile Include="Commands\DepartmentCommand\EditDepartmentCommand.cs" />
+    <Compile Include="Commands\EmployeeCommand\CreateEmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCommand\DeleteEmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCommand\EditEmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCommand\EmployeeCommand.cs" />
+    <Compile Include="Commands\UserCommand\AuthenticateUserCommand.cs" />
+    <Compile Include="Commands\UserCommand\CreateUserCommand.cs" />
+    <Compile Include="Commands\UserCommand\EditUserCommand.cs" />
+    <Compile Include="Commands\UserCommand\UserCommand.cs" />
     <Compile Include="Common\Entity.cs" />
     <Compile Include="Common\EPermission.cs" />
+    <Compile Include="Common\Runtime.cs" />
     <Compile Include="Common\ValidationPassword.cs" />
     <Compile Include="Entities\Department.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IDepartmentRepository.cs" />
+    <Compile Include="Repositories\IEmployeeRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Services\IDepartmentAppService.cs" />
+    <Compile Include="Services\IEmployeeAppService.cs" />
+    <Compile Include="Services\IUserAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

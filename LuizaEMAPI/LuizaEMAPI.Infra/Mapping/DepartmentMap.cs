@@ -8,19 +8,15 @@ using System.Threading.Tasks;
 
 namespace LuizaEMAPI.Infra.Mapping
 {
-    public class UserMap : EntityTypeConfiguration<User>
+    public class DepartmentMap : EntityTypeConfiguration<Department>
     {
-        public UserMap()
+        public DepartmentMap()
         {
-            ToTable("User");
+            ToTable("Department");
             HasKey(x => x.Id);
             Property(x => x.Name).IsRequired().HasMaxLength(60);
-            Property(x => x.Email).IsRequired().HasMaxLength(50);
-            Property(x => x.Password).IsRequired().HasMaxLength(32).IsFixedLength();
-            Property(x => x.Permission);
-            Property(x => x.Active); 
-
-
+            Property(x => x.Description).IsRequired().HasMaxLength(200);
+            Property(x => x.Active);
         }
     }
 }

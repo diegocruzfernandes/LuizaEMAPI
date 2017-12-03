@@ -6,17 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LuizaEMAPI.Domain.Repositories
+namespace LuizaEMAPI.Domain.Services
 {
-    public interface IUserRepository
+    public interface IUserAppService
     {
         IEnumerable<UserCommand> Get();
         IEnumerable<UserCommand> Get(int skip, int take);
-        User Get(Guid id);
+        UserCommand Get(Guid id);
         User GetByEmail(string email);
-        void Save(User user);
-        void Update(User user);
-        void Delete(User user);
-        bool UserExists(User user);
+        UserCommand Create(CreateUserCommand command);
+        UserCommand Update(EditUserCommand command);
+        UserCommand Delete(Guid id);
     }
 }

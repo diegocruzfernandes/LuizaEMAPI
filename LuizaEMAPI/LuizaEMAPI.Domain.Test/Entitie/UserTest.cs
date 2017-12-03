@@ -16,15 +16,15 @@ namespace LuizaEMAPI.Domain.Test.Entitie
 
 
         [TestMethod]
-        [TestCategory("User - New User")]
-        public void CreateNewUser()
+        [TestCategory("User")]
+        public void CreateNewInstanceUser()
         {
             User user = new User(Name, Email, Password, Permission, true);
             Assert.IsTrue(user.Valid);
         }
 
         [TestMethod]
-        [TestCategory("User - New User")]
+        [TestCategory("User")]
         public void GivenAnInvalidNameShouldReturnNotification()
         {
             //Dont empty
@@ -43,7 +43,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         }
 
         [TestMethod]
-        [TestCategory("User - New User")]
+        [TestCategory("User")]
         public void GivenAnInvalidEmailShouldReturnNotification()
         {
 
@@ -55,47 +55,49 @@ namespace LuizaEMAPI.Domain.Test.Entitie
             User user2 = new User(Name, "", Password, Permission, true);
             Assert.IsFalse(user2.Valid);
 
-            //Min lenght = 10
+            //length > 3
             User user3 = new User(Name, "me", Password, Permission, true);
             Assert.IsFalse(user3.Valid);
 
-            //Max lenght = 50
+            //length < 50
             User user4 = new User(Name, "meuemailestacomvalormaiorque50caracteres@provedor.com", Password, Permission, true);
             Assert.IsFalse(user4.Valid);
         }
 
         [TestMethod]
-        [TestCategory("User - New User")]
+        [TestCategory("User")]
         public void GivenAnInvalidPasswordShouldReturnNotification()
         {
             //is not null or empty
             User user = new User(Name, Email, "", Permission, true);
             Assert.IsFalse(user.Valid);
 
-            //lenght < 3
+            //length < 3
             User user2 = new User(Name, Email, "ab", Permission, true);
             Assert.IsFalse(user2.Valid);
 
-            //lenght > 60
+            //length > 60
             User user3 = new User(Name, Email, "Pneumoultramicroscopicossilicovulcanoconiotico_Inconstitucionalissimo", Permission, true);
             Assert.IsFalse(user3.Valid);
         }
 
         [TestMethod]
-        [TestCategory("User - Change User Data")]
+        [TestCategory("User")]
         public void ChangeAnInvalidEmaildShouldReturnNotification()
         {
             //is not null or empty
 
-            //lenght > 10
+            //length > 10
             User user = new User(Name, Email, Password, Permission, true);
             user.ChangeEmail("email");
             Assert.IsFalse(user.Valid);
 
+            //format invalid
             User user2 = new User(Name, Email, Password, Permission, true);
             user2.ChangeEmail("teste_mail.com.br");
             Assert.IsFalse(user2.Valid);
 
+            //length < 50
             User user3 = new User(Name, Email, Password, Permission, true);
             user3.ChangeEmail("meuemailestacomvalormaiorque50caracteres@provedor.com");
             Assert.IsFalse(user3.Valid);
@@ -103,8 +105,8 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         }
 
         [TestMethod]
-        [TestCategory("User - Change User Data")]
-        public void ValidationPasswordValue()
+        [TestCategory("User")]
+        public void ValidationPasswordValueCompareNewWithOld()
         {
             User user = new User(Name, Email, Password, Permission, true);
             Assert.AreEqual(user.Password, ValidationPassword.Encrypt(Password));
@@ -114,7 +116,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         }
 
         [TestMethod]
-        [TestCategory("User - Change User Data")]
+        [TestCategory("User")]
         public void ChangeActivationUser()
         {
             User user = new User(Name, Email, Password, Permission, true);
@@ -125,8 +127,8 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         }
 
         [TestMethod]
-        [TestCategory("User - Change User Data")]
-        public void ChangeName()
+        [TestCategory("User")]
+        public void ChangeNameCompareNewWithOld()
         {
             User user = new User(Name, Email, Password, Permission, true);
 
@@ -137,7 +139,7 @@ namespace LuizaEMAPI.Domain.Test.Entitie
         }
 
         [TestMethod]
-        [TestCategory("User - Change User Data")]
+        [TestCategory("User")]
         public void AuthenticateValidation()
         {
             User user = new User(Name, Email, Password, Permission, true);
