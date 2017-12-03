@@ -70,8 +70,13 @@ namespace LuizaEMAPI.API
 
             services.AddScoped<LuizaEMAPIDataContext, LuizaEMAPIDataContext>();
             services.AddTransient<IUow, Uow>();
+
             services.AddTransient<IDepartmentAppService, DepartmentAppService>();
             services.AddTransient<IDepartmentRepository, DepartmentRepository>();
+
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserAppService, UserAppService>();
+            
 
             
         }

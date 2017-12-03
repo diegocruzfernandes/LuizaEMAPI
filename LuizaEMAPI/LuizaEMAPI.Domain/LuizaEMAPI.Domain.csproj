@@ -118,6 +118,14 @@
     <Compile Include="Commands\DepartmentCommand\DeleteDepartmentCommand.cs" />
     <Compile Include="Commands\DepartmentCommand\DepartmentCommand.cs" />
     <Compile Include="Commands\DepartmentCommand\EditDepartmentCommand.cs" />
+    <Compile Include="Commands\EmployeeCommand\CreateEmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCommand\DeleteEmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCommand\EditEmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCommand\EmployeeCommand.cs" />
+    <Compile Include="Commands\UserCommand\AuthenticateUserCommand.cs" />
+    <Compile Include="Commands\UserCommand\CreateUserCommand.cs" />
+    <Compile Include="Commands\UserCommand\EditUserCommand.cs" />
+    <Compile Include="Commands\UserCommand\UserCommand.cs" />
     <Compile Include="Common\Entity.cs" />
     <Compile Include="Common\EPermission.cs" />
     <Compile Include="Common\Runtime.cs" />
@@ -130,6 +138,8 @@
     <Compile Include="Repositories\IEmployeeRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Services\IDepartmentAppService.cs" />
+    <Compile Include="Services\IEmployeeAppService.cs" />
+    <Compile Include="Services\IUserAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

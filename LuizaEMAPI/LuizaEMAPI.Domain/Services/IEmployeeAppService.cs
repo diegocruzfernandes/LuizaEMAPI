@@ -6,17 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LuizaEMAPI.Domain.Repositories
+namespace LuizaEMAPI.Domain.Services
 {
-    public interface IEmployeeRepository
+    public interface IEmployeeAppService
     {
         IEnumerable<EmployeeCommand> Get();
         IEnumerable<EmployeeCommand> Get(int skip, int take);
         Employee Get(Guid id);
-        Employee GetByName(string firstname);
-        void Save(Employee employee);
-        void Update(Employee employee);
-        void Delete(Employee employee);
-        bool EmployeeExists(Employee employee);
+        Employee Create(CreateEmployeeCommand command);
+        Employee Update(EditEmployeeCommand command);
+        Employee Delete(Guid id);
     }
 }

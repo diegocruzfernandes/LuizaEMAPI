@@ -68,5 +68,17 @@ namespace LuizaEMAPI.API.Controllers
             }
 
         }
+
+        public async Task<IActionResult> ResponseNullOrEmpty()
+        {
+            //Create the LOG FILE
+            return BadRequest(new
+            {
+                success = false,
+                errors = new[] { "Dados não preenchidos ou inválidos." }
+            });
+
+
+        }
     }
 }

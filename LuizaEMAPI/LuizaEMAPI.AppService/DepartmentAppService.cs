@@ -11,7 +11,7 @@ using FluentValidator;
 
 namespace LuizaEMAPI.AppService
 {
-    public class DepartmentAppService : Notifiable,  IDepartmentAppService 
+    public class DepartmentAppService : Notifiable, IDepartmentAppService
     {
         private readonly IDepartmentRepository _repository;
 
@@ -31,7 +31,7 @@ namespace LuizaEMAPI.AppService
             return depart;
         }
 
-     
+
 
         public Department Get(Guid id)
         {
@@ -46,7 +46,7 @@ namespace LuizaEMAPI.AppService
         public IEnumerable<DepartmentCommand> Get()
         {
             return _repository.Get();
-        }      
+        }
 
         public IEnumerable<DepartmentCommand> Get(int skip, int take)
         {
@@ -59,10 +59,12 @@ namespace LuizaEMAPI.AppService
 
             depart.ChangeName(command.Name);
             depart.ChangeDescription(command.Description);
-            _repository.Update(depart);
+            if (command.Active) depart.Activate(); else depart.Deactivate();
+
+            if (depart.Valid)
+                _repository.Update(depart);
 
             return depart;
-
         }
 
         public Department Delete(Guid id)
@@ -70,7 +72,7 @@ namespace LuizaEMAPI.AppService
             var depart = _repository.Get(id);
 
             if (depart == null)
-                depart.AddNotification("Department", "não foi encontrado o departamento");
+                depart.AddNotification("Department", "Não foi encontrado o departamento solicitado");
             else
                 _repository.Delete(depart);
 
