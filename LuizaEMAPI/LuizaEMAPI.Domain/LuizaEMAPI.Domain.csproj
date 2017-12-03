@@ -118,14 +118,9 @@
     <Compile Include="Commands\DepartmentCommand\DeleteDepartmentCommand.cs" />
     <Compile Include="Commands\DepartmentCommand\DepartmentCommand.cs" />
     <Compile Include="Commands\DepartmentCommand\EditDepartmentCommand.cs" />
-    <Compile Include="Commands\Handler\DepartmentCommandHandler.cs" />
-    <Compile Include="Commands\Handler\UserCommandHandler.cs" />
-    <Compile Include="Commands\Results\DepartmentCommandResult.cs" />
-    <Compile Include="Commands\Shared\ICommand.cs" />
-    <Compile Include="Commands\Shared\ICommandHandler.cs" />
-    <Compile Include="Commands\Shared\ICommandResult.cs" />
     <Compile Include="Common\Entity.cs" />
     <Compile Include="Common\EPermission.cs" />
+    <Compile Include="Common\Runtime.cs" />
     <Compile Include="Common\ValidationPassword.cs" />
     <Compile Include="Entities\Department.cs" />
     <Compile Include="Entities\Employee.cs" />
