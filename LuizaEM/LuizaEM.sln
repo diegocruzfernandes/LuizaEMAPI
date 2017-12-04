@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuizaEM.Domain", "LuizaEM.Domain\LuizaEM.Domain.csproj", "{637DD14F-F073-42BF-A8D4-74270A1E2FB7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuizaEM.Infra", "LuizaEM.Infra\LuizaEM.Infra.csproj", "{339F3BCD-2CF6-4FB5-BA0B-9A7F73D8A821}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuizaEM.ViewConsole", "LuizaEM.Console\LuizaEM.ViewConsole.csproj", "{703A53C0-194E-4632-96BF-D6B5DA24DE1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-API", "1-API", "{9319F6F6-4D37-496D-83C4-E80CB150B2C6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-ApplicationService", "2-ApplicationService", "{9EBE000B-D906-46D8-AE7E-B39C41751A09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{0D9171B9-CF0D-4CD0-BAED-F7020A90DF9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Infrastructure", "4-Infrastructure", "{69F65633-1842-4954-A7CF-2F5594842AF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuizaEM.AppService", "LuizaEM.AppService\LuizaEM.AppService.csproj", "{3FEE7867-870E-4DE6-8492-91D297378447}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "LuizaEM.Api", "LuizaEM.Api\LuizaEM.Api.xproj", "{FDD09195-2767-47A1-9852-F54B603B6186}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{637DD14F-F073-42BF-A8D4-74270A1E2FB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{637DD14F-F073-42BF-A8D4-74270A1E2FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{637DD14F-F073-42BF-A8D4-74270A1E2FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{637DD14F-F073-42BF-A8D4-74270A1E2FB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{339F3BCD-2CF6-4FB5-BA0B-9A7F73D8A821}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{339F3BCD-2CF6-4FB5-BA0B-9A7F73D8A821}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{339F3BCD-2CF6-4FB5-BA0B-9A7F73D8A821}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{339F3BCD-2CF6-4FB5-BA0B-9A7F73D8A821}.Release|Any CPU.Build.0 = Release|Any CPU
+		{703A53C0-194E-4632-96BF-D6B5DA24DE1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{703A53C0-194E-4632-96BF-D6B5DA24DE1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{703A53C0-194E-4632-96BF-D6B5DA24DE1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{703A53C0-194E-4632-96BF-D6B5DA24DE1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FEE7867-870E-4DE6-8492-91D297378447}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FEE7867-870E-4DE6-8492-91D297378447}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FEE7867-870E-4DE6-8492-91D297378447}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FEE7867-870E-4DE6-8492-91D297378447}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDD09195-2767-47A1-9852-F54B603B6186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDD09195-2767-47A1-9852-F54B603B6186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDD09195-2767-47A1-9852-F54B603B6186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD09195-2767-47A1-9852-F54B603B6186}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{637DD14F-F073-42BF-A8D4-74270A1E2FB7} = {0D9171B9-CF0D-4CD0-BAED-F7020A90DF9B}
+		{339F3BCD-2CF6-4FB5-BA0B-9A7F73D8A821} = {69F65633-1842-4954-A7CF-2F5594842AF0}
+		{3FEE7867-870E-4DE6-8492-91D297378447} = {9EBE000B-D906-46D8-AE7E-B39C41751A09}
+		{FDD09195-2767-47A1-9852-F54B603B6186} = {9319F6F6-4D37-496D-83C4-E80CB150B2C6}
+	EndGlobalSection
+EndGlobal
