@@ -25,7 +25,7 @@ namespace LuizaEM.Api.Controllers
                 try
                 {
                     _uow.Commit();
-                    return Ok(new
+                    return  Ok(new
                     {
                         success = true,
                         data = result
@@ -34,7 +34,7 @@ namespace LuizaEM.Api.Controllers
                 catch (Exception ex)
                 {
                     //Create the LOG FILE
-                    return BadRequest(new
+                    return  BadRequest(new
                     {
                         success = false,
                         errors = new[] { "Ocorreu uma folha interna no servidor.", ex.Message }

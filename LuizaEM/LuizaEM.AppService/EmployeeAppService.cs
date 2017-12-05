@@ -20,8 +20,7 @@ namespace LuizaEM.AppService
             _repository = repository;
             _repositoryDepart = repositoryDepart;
         }
-
-
+        
         public Employee Create(CreateEmployeeCommand command)
         {
 
@@ -60,19 +59,54 @@ namespace LuizaEM.AppService
             return _repository.Get(id);
         }
 
-        public IEnumerable<EmployeeCommand> GetFullInformation(int skip, int take)
+        public IEnumerable<ViewCompleteEmployeeCommand> GetFullInformation(int skip, int take)
         {
-            return _repository.Get(skip, take);
+            var listEmployees = _repository.Get(skip, take);
+
+            List<ViewCompleteEmployeeCommand> fullListEmployee = new List<ViewCompleteEmployeeCommand>();
+            foreach (var employee in listEmployees)
+            {
+                fullListEmployee.Add(new ViewCompleteEmployeeCommand(
+                    employee.Id,
+                    employee.FirstName,
+                    employee.LastName,
+                    employee.Email,
+                    employee.Department.Name,
+                    employee.BirthDate,
+                    employee.Active));
+            }
+
+            return fullListEmployee;
+        }
+
+        public IEnumerable<ViewCompleteEmployeeCommand> Find(string firstname, string lastname, bool match)
+        {
+            var list = _repository.Find(firstname, lastname, match);
+
+            List<ViewCompleteEmployeeCommand> fullListEmployee = new List<ViewCompleteEmployeeCommand>();
+            foreach (var employee in list)
+            {
+                fullListEmployee.Add(new ViewCompleteEmployeeCommand(
+                    employee.Id,
+                    employee.FirstName,
+                    employee.LastName,
+                    employee.Email,
+                    employee.Department.Name,
+                    employee.BirthDate,
+                    employee.Active));
+            }
+
+            return fullListEmployee;
         }
 
         public IEnumerable<ViewSimpleEmployeeCommand> GetSimpleInformation(int skip, int take)
         {
             var listEmployees = _repository.Get(skip, take);
 
-            List<ViewSimpleEmployeeCommand> simpleListEmployees = null;
+            List<ViewSimpleEmployeeCommand> simpleListEmployees = new List<ViewSimpleEmployeeCommand>();
             foreach (var employee in listEmployees)
             {
-                simpleListEmployees.Add(new ViewSimpleEmployeeCommand(employee.FullName(), employee.Email, employee.Department));
+                simpleListEmployees.Add(new ViewSimpleEmployeeCommand(employee.FullName(), employee.Email, employee.Department.Name));
             }
 
             return simpleListEmployees;

@@ -55,28 +55,31 @@ namespace LuizaEM.Infra.Repositories
             return _context.Employees.Include(x => x.Department).AsNoTracking().FirstOrDefault(x => x.Id == id);
         }
 
-        public IEnumerable<EmployeeCommand> Get(int skip, int take)
+        public IEnumerable<Employee> Get(int skip, int take)
         {
             return _context
                .Employees
-               .Select(e => new EmployeeCommand
-               {
-                   FirstName = e.FirstName,
-                   LastName = e.LastName,
-                   Email = e.Email,
-                   DepartmentId = e.DepartmentId,
-                   BirthDate = e.BirthDate,
-                   Active = e.Active
-               })
+               .Include(x => x.Department)
                .OrderBy(e => e.FirstName)
                .Skip(skip)
                .Take(take)
                .ToList();
         }
 
-        public Employee GetByName(string firstname)
+        public IEnumerable<Employee> Find(string firstname, string lastname, bool match)
         {
-            return _context.Employees.Include(x => x.Department).AsNoTracking().FirstOrDefault(x => x.FirstName == firstname);
+            string find = "";
+
+            if (string.IsNullOrEmpty(lastname))
+                return _context.Employees.Include(x => x.Department).AsNoTracking().Where(x => x.FirstName.Contains(firstname));            
+
+            if (string.IsNullOrEmpty(firstname))
+                return _context.Employees.Include(x => x.Department).AsNoTracking().Where(x => x.LastName.Contains(lastname));
+
+            if (match && find == "")
+                return _context.Employees.Include(x => x.Department).AsNoTracking().Where(x => x.FirstName.Contains(firstname) || x.LastName.Contains(lastname));
+            else
+                return _context.Employees.Include(x => x.Department).AsNoTracking().Where(x => x.FirstName.Contains(firstname) && x.LastName.Contains(lastname));
         }
 
         public void Save(Employee employee)

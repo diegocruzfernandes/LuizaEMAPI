@@ -36,11 +36,7 @@ namespace LuizaEM.AppService
             return usercmd;
         }
 
-        private void AddNotification(string v1, string v2)
-        {
-            throw new NotImplementedException();
-        }
-
+    
         public UserCommand Delete(int id)
         {
             var user = _repository.Get(id);

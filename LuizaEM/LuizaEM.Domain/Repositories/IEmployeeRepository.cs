@@ -11,9 +11,9 @@ namespace LuizaEM.Domain.Repositories
     public interface IEmployeeRepository
     {
         IEnumerable<EmployeeCommand> Get();
-        IEnumerable<EmployeeCommand> Get(int skip, int take);
+        IEnumerable<Employee> Get(int skip, int take);
+        IEnumerable<Employee> Find(string firstname, string lastname, bool match);
         Employee Get(int id);
-        Employee GetByName(string firstname);
         void Save(Employee employee);
         void Update(Employee employee);
         void Delete(Employee employee);

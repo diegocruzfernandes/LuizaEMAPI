@@ -12,8 +12,9 @@ namespace LuizaEM.Domain.Services
     public interface IEmployeeAppService
     {
         IEnumerable<EmployeeCommand> Get();
-        IEnumerable<EmployeeCommand> GetFullInformation(int skip, int take);
         IEnumerable<ViewSimpleEmployeeCommand> GetSimpleInformation(int skip, int take);
+        IEnumerable<ViewCompleteEmployeeCommand> GetFullInformation(int skip, int take);
+        IEnumerable<ViewCompleteEmployeeCommand> Find(string firstname, string lastname, bool match);
         Employee Get(int id);
         Employee Create(CreateEmployeeCommand command);
         Employee Update(EditEmployeeCommand command);

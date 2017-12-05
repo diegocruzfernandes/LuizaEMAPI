@@ -17,33 +17,48 @@ namespace LuizaEM.Api.Controllers
         {
             _service = service;
         }
-
-        /*
+                
         [HttpGet]
         [Route("v1/employee")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetByRange(
+            [FromQuery(Name="page_size")]int page_size, 
+            [FromQuery(Name="page")]int page,
+            [FromQuery(Name = "full")]bool full)
         {
-            var result = _service.Get();
-            return await ResponseList(result);
-        }
-        */
-
-        
-        [HttpGet]
-        [Route("v1/employee")]
-        public async Task<IActionResult> GetByRange([FromQuery(Name="page_size")]int page_size, [FromQuery(Name="page")]int page)
-        {
-            if (page_size > 0 && page > -1)
+            if (page_size > 0 && page > 0)
             {
-                var pageskip = page_size * page;
-                var result = _service.GetSimpleInformation(pageskip, page_size);
-                return await ResponseList(result);
+                var skip = (page - 1) * page_size;
+
+                if (full)
+                {
+                    var result = _service.GetFullInformation(skip, page_size);
+                    return await ResponseList(result);
+                }
+                else
+                {
+                    
+                    var result = _service.GetSimpleInformation(skip, page_size);
+                    return await ResponseList(result);
+                }
+                
             }
             else
-            {
+            {                
                 var result = _service.Get();
                 return await ResponseList(result);
             }
+        }
+
+        [HttpGet]
+        [Route("v1/employee/find")]
+        public async Task<IActionResult> Find(
+           [FromQuery(Name = "firstname")]string firstname,
+           [FromQuery(Name = "lastname")]string lastname,
+           [FromQuery(Name = "match")]bool match)         
+        {
+
+            var result = _service.Find(firstname, lastname, match);
+            return await ResponseList(result);            
         }
 
         [HttpGet]
