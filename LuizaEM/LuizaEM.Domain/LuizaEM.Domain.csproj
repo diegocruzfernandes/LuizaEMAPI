@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{637DD14F-F073-42BF-A8D4-74270A1E2FB7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LuizaEM.Domain</RootNamespace>
+    <AssemblyName>LuizaEM.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentValidator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidator.1.0.5\lib\net461\FluentValidator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\DepartmentCommands\CreateDepartmentCommand.cs" />
+    <Compile Include="Commands\DepartmentCommands\DeleteDepartmentCommand.cs" />
+    <Compile Include="Commands\DepartmentCommands\DepartmentCommand.cs" />
+    <Compile Include="Commands\DepartmentCommands\EditDepartmentCommand.cs" />
+    <Compile Include="Commands\DepartmentCommands\InputDepartmentCommand.cs" />
+    <Compile Include="Commands\EmployeeCommands\CreateEmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCommands\DeleteEmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCommands\EditEmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCommands\EmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCommands\ViewCompleteEmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCommands\ViewSimpleEmployeeCommand.cs" />
+    <Compile Include="Commands\UserCommands\AuthenticateUserCommand.cs" />
+    <Compile Include="Commands\UserCommands\CreateUserCommand.cs" />
+    <Compile Include="Commands\UserCommands\EditUserCommand.cs" />
+    <Compile Include="Commands\UserCommands\UserCommand.cs" />
+    <Compile Include="Entities\Department.cs" />
+    <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IDepartmentRepository.cs" />
+    <Compile Include="Repositories\IEmployeeRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Services\IDepartmentAppService.cs" />
+    <Compile Include="Services\IEmployeeAppService.cs" />
+    <Compile Include="Services\IUserAppService.cs" />
+    <Compile Include="Shared\EPermission.cs" />
+    <Compile Include="Shared\Runtime.cs" />
+    <Compile Include="Shared\ValidationPassword.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
