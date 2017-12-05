@@ -42,6 +42,7 @@ namespace LuizaEM.Domain.Entities
         public void Validate()
         {
             new ValidationContract<Department>(this)
+                .IsRequired(x => x.Name)
                 .HasMinLenght(x => x.Name, 3, "O  nome não pode ser menor que 3 caracteres")
                 .HasMaxLenght(x => x.Name, 60, "O  nome não pode ser maior que 60 caracteres")
                 .HasMaxLenght(x => x.Description, 200, "A descrição não pode ser maior que 200 caracteres");

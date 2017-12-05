@@ -73,11 +73,14 @@ namespace LuizaEM.Domain.Entities
         public void Validate()
         {
             new ValidationContract<User>(this)
+                .IsRequired(x => x.Username)
                 .HasMinLenght(x => x.Username, 3, "O  nome não pode ser menor que 3 caracteres")
                 .HasMaxLenght(x => x.Username, 60, "O  nome não pode ser maior que 60 caracteres")
+                .IsRequired(x => x.Email)
                 .HasMinLenght(x => x.Email, 10, "O e-mail não pode ser menor que 10 caracteres")
                 .HasMaxLenght(x => x.Email, 60, "O e-mail não pode ser maior que 60 caracteres")
                 .IsEmail(x => x.Email, "Email no formato inválido")
+                .IsRequired(x => x.Password)
                 .HasMinLenght(x => x.Password, 3, "O Password não pode ser menor que 3 caracteres")
                 .HasMaxLenght(x => x.Password, 60, "O Password não pode ser maio que 60 caracteres")
                 .IsNotNull(Permission, "A permissão não pode ser nula ou vazia");

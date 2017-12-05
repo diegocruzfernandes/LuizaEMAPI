@@ -66,6 +66,7 @@
     <Compile Include="Services\IEmployeeAppService.cs" />
     <Compile Include="Services\IUserAppService.cs" />
     <Compile Include="Shared\EPermission.cs" />
+    <Compile Include="Shared\Runtime.cs" />
     <Compile Include="Shared\ValidationPassword.cs" />
   </ItemGroup>
   <ItemGroup>

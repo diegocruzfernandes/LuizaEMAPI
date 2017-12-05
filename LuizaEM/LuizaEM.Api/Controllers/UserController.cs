@@ -1,6 +1,7 @@
 ﻿using LuizaEM.Domain.Commands.UserCommands;
 using LuizaEM.Domain.Services;
 using LuizaEM.Infra.Transactions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace LuizaEM.Api.Controllers
 
         [HttpPost]
         [Route("v1/user")]
+        [AllowAnonymous]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand command)
         {
             if (command == null)
