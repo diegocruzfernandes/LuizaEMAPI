@@ -1,10 +1,7 @@
-﻿using LuizaEM.Domain.Commands.UserCommands;
+﻿using FluentValidator;
+using LuizaEM.Domain.Commands.UserCommands;
 using LuizaEM.Domain.Entities;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LuizaEM.Domain.Services
 {
@@ -18,5 +15,6 @@ namespace LuizaEM.Domain.Services
         UserCommand Update(EditUserCommand command);
         UserCommand Delete(int id);
         User ResetPassword(int id);
+        IEnumerable<Notification> Validate();
     }
 }

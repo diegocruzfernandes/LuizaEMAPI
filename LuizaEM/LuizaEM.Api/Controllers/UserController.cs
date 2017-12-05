@@ -26,7 +26,7 @@ namespace LuizaEM.Api.Controllers
                 return await ResponseNullOrEmpty();
 
             var result = _service.Create(command);
-            return await Response(result, result.Notifications);
+            return await Response(result, _service.Validate());
         }
 
         [HttpGet]
@@ -51,7 +51,7 @@ namespace LuizaEM.Api.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var result = _service.Delete(id);
-            return await Response(result, result.Notifications);
+            return await Response(result, _service.Validate());
         }
 
         [HttpPut]
@@ -59,8 +59,7 @@ namespace LuizaEM.Api.Controllers
         public async Task<IActionResult> Update([FromBody] EditUserCommand command)
         {
             var result = _service.Update(command);
-            return await Response(result, result.Notifications);
-
+            return await Response(result, _service.Validate());
         }
 
         [HttpGet]
@@ -68,7 +67,7 @@ namespace LuizaEM.Api.Controllers
         public async Task<IActionResult> ResetPassword(int id)
         {
             var result = _service.ResetPassword(id);
-            return await ResponseList(result);
+            return await Response(result, _service.Validate());
         }
     }
 }

@@ -18,6 +18,7 @@ namespace LuizaEM.Api.Controllers
             _service = service;
         }
 
+        /*
         [HttpGet]
         [Route("v1/employee")]
         public async Task<IActionResult> Get()
@@ -25,14 +26,24 @@ namespace LuizaEM.Api.Controllers
             var result = _service.Get();
             return await ResponseList(result);
         }
+        */
 
-        //TODO: Resolver
+        
         [HttpGet]
-        [Route("v1/employee/Page={skip:int:min(0)},Page_Size={take:int:min(1)}")]
-        public async Task<IActionResult> GetByRange(int skip, int take)
+        [Route("v1/employee")]
+        public async Task<IActionResult> GetByRange([FromQuery(Name="page_size")]int page_size, [FromQuery(Name="page")]int page)
         {
-            var result = _service.Get(skip, take);
-            return await ResponseList(result);
+            if (page_size > 0 && page > -1)
+            {
+                var pageskip = page_size * page;
+                var result = _service.GetSimpleInformation(pageskip, page_size);
+                return await ResponseList(result);
+            }
+            else
+            {
+                var result = _service.Get();
+                return await ResponseList(result);
+            }
         }
 
         [HttpGet]

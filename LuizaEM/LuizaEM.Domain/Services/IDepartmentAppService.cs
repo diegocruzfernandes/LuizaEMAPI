@@ -1,4 +1,5 @@
-﻿using LuizaEM.Domain.Commands.DepartmentCommands;
+﻿using FluentValidator;
+using LuizaEM.Domain.Commands.DepartmentCommands;
 using LuizaEM.Domain.Entities;
 using System.Collections.Generic;
 
@@ -12,7 +13,7 @@ namespace LuizaEM.Domain.Services
         Department Create(CreateDepartmentCommand command);
         Department Update(EditDepartmentCommand command);
         Department Delete(int id);
-      
+        IEnumerable<Notification> Validate();
 
     }
 }

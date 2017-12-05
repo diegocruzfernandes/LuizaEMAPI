@@ -5,30 +5,28 @@ using LuizaEM.Domain.Entities;
 using LuizaEM.Domain.Repositories;
 using LuizaEM.Domain.Shared;
 using System;
+using FluentValidator;
 
 namespace LuizaEM.AppService
 {
-    public class UserAppService : IUserAppService
+    public class UserAppService : Notifiable, IUserAppService 
     {
         private readonly IUserRepository _repository;
 
         public UserAppService(IUserRepository repository)
         {
-            _repository = repository;
+            _repository = repository;           
         }
 
         public UserCommand Create(CreateUserCommand command)
         {
             var user = new User(0, command.Username, command.Email, command.Password, (EPermission)command.Permission, command.Active);
 
-            var rep = _repository.UserExists(user);
-
-            if (rep)
+            if (_repository.UserExists(user))
             {
-                var usernull = ConvertUserToUserCmdAndAddNotifications(user);
-                usernull.AddNotification("User", "Usuário já cadastrado!");
-                return usernull;
-            };
+                AddNotification("User", "Usuário já cadastrado!");
+                return null;
+            }   
 
             if (user.IsValid())
                 _repository.Save(user);
@@ -36,6 +34,11 @@ namespace LuizaEM.AppService
             var usercmd = ConvertUserToUserCmdAndAddNotifications(user);
 
             return usercmd;
+        }
+
+        private void AddNotification(string v1, string v2)
+        {
+            throw new NotImplementedException();
         }
 
         public UserCommand Delete(int id)
@@ -102,7 +105,7 @@ namespace LuizaEM.AppService
                 Active = user.Active
             };
 
-            usercmd.AddNotifications(user.Notifications);
+            AddNotifications(user.Notifications);
 
             return usercmd;
         }
@@ -125,5 +128,12 @@ namespace LuizaEM.AppService
 
             return user;
         }
+
+        public IEnumerable<Notification> Validate()
+        {
+            return Notifications;
+        }
+
+       
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace LuizaEM.Domain.Commands.DepartmentCommands
 {
-    public class DepartmentCommand
+    public class DepartmentCommand 
     {
         public string Name { get; set; }
         public string Description { get; set; }

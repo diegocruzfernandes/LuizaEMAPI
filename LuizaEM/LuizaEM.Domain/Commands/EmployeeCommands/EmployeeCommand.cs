@@ -16,5 +16,12 @@ namespace LuizaEM.Domain.Commands.EmployeeCommands
         public DateTime BirthDate { get; set; }
         public bool Active { get; set; }
 
+        public string FullName()
+        {
+            return $"{FirstName} {LastName}";
+        }
+
     }
+
+  
 }

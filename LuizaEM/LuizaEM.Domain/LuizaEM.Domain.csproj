@@ -49,6 +49,7 @@
     <Compile Include="Commands\EmployeeCommands\DeleteEmployeeCommand.cs" />
     <Compile Include="Commands\EmployeeCommands\EditEmployeeCommand.cs" />
     <Compile Include="Commands\EmployeeCommands\EmployeeCommand.cs" />
+    <Compile Include="Commands\EmployeeCommands\ViewSimpleEmployeeCommand.cs" />
     <Compile Include="Commands\UserCommands\AuthenticateUserCommand.cs" />
     <Compile Include="Commands\UserCommands\CreateUserCommand.cs" />
     <Compile Include="Commands\UserCommands\EditUserCommand.cs" />
