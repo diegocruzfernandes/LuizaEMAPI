@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="Commands\DepartmentCommands\CreateDepartmentCommand.cs" />
     <Compile Include="Commands\DepartmentCommands\DeleteDepartmentCommand.cs" />
-    <Compile Include="Commands\DepartmentCommands\DepartmentCommand.cs" />
     <Compile Include="Commands\DepartmentCommands\EditDepartmentCommand.cs" />
     <Compile Include="Commands\DepartmentCommands\InputDepartmentCommand.cs" />
     <Compile Include="Commands\EmployeeCommands\CreateEmployeeCommand.cs" />

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LuizaEM.Domain.Commands.EmployeeCommands
 {
@@ -25,7 +21,6 @@ namespace LuizaEM.Domain.Commands.EmployeeCommands
         public string Email { get; set; }
         public string Department { get; set; }
         public DateTime BirthDate { get; set; }
-        public bool Active { get; set; }
-        
+        public bool Active { get; set; }        
     }
 }

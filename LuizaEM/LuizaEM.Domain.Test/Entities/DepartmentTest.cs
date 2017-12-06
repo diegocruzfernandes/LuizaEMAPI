@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LuizaEM.Domain.Entities;
 
 namespace LuizaEM.Domain.Tests.Entities
@@ -7,7 +6,6 @@ namespace LuizaEM.Domain.Tests.Entities
     [TestClass]
     public class DepartmentTest
     {
-
         private string Name = "Administration";
         private string Description = "Manages all sectors of the company";
 
@@ -53,10 +51,8 @@ namespace LuizaEM.Domain.Tests.Entities
 
             depart.Activate();
             Assert.IsTrue(depart.Active);
-
             depart.Deactivate();
             Assert.IsFalse(depart.Active);
-
         }
 
         [TestMethod]
@@ -64,7 +60,6 @@ namespace LuizaEM.Domain.Tests.Entities
         public void UpdateDataDepartmentCompareNewWithOld()
         {
             Department depart = new Department(0,Name, Description, true);
-
             Assert.AreEqual(depart.Name, Name);
             Assert.AreEqual(depart.Description, Description);
 
@@ -72,11 +67,6 @@ namespace LuizaEM.Domain.Tests.Entities
             Assert.AreNotEqual(depart.Name, Name);
             Assert.AreNotEqual(depart.Description, Description);
             Assert.IsFalse (depart.Active);
-
         }
-
-      
-
-
     }
 }

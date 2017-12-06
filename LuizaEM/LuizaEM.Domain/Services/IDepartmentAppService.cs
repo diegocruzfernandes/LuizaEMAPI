@@ -14,6 +14,5 @@ namespace LuizaEM.Domain.Services
         Department Update(EditDepartmentCommand command);
         Department Delete(int id);
         IEnumerable<Notification> Validate();
-
     }
 }

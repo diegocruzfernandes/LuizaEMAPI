@@ -1,10 +1,5 @@
 ﻿using LuizaEM.Domain.Entities;
-using System;
-using System.Collections.Generic;
 using System.Data.Entity.ModelConfiguration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LuizaEM.Infra.Maps
 {
@@ -20,9 +15,7 @@ namespace LuizaEM.Infra.Maps
             Property(x => x.BirthDate);
             Property(x => x.Active);
             Property(x => x.DepartmentId).IsRequired();
-
-            HasRequired(d => d.Department);              
- 
+            HasRequired(d => d.Department);
         }
     }
 }

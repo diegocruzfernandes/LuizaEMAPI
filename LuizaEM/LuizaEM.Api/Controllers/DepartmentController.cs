@@ -9,7 +9,6 @@ namespace LuizaEM.Api.Controllers
 {
     public class DepartmentController : BaseController
     {
-
         private readonly IDepartmentAppService _service;
 
         public DepartmentController(IDepartmentAppService service, IUow uow) : base(uow)
@@ -39,11 +38,9 @@ namespace LuizaEM.Api.Controllers
             [FromQuery(Name = "page")]int page)
         {
             var skip = (page - 1) * page_size;
-
             var result = _service.Get(skip, page_size);
             return await ResponseList(result);
         }
-
      
         [HttpDelete]
         [Route("v1/department/{id}")]
@@ -70,7 +67,6 @@ namespace LuizaEM.Api.Controllers
         {
             var result = _service.Update(command);
             return await Response(result, result.Notifications);
-
         }
     }
 }

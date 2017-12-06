@@ -2,12 +2,9 @@
 using LuizaEM.Domain.Entities;
 using LuizaEM.Domain.Repositories;
 using LuizaEM.Infra.Context;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LuizaEM.Infra.Repositories
 {

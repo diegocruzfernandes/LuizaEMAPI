@@ -19,7 +19,6 @@ namespace LuizaEM.Infra.Maps
             Property(x => x.Password).IsRequired().HasMaxLength(32).IsFixedLength();
             Property(x => x.Permission);
             Property(x => x.Active);
-
         }
     }
 }

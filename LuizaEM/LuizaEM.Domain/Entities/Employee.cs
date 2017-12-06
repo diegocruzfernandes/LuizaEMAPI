@@ -1,10 +1,5 @@
 ﻿using FluentValidator;
-using LuizaEM.Domain.Shared;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LuizaEM.Domain.Entities
 {
@@ -57,6 +52,7 @@ namespace LuizaEM.Domain.Entities
         }
 
         public void Activate() => Active = true;
+
         public void Deactivate() => Active = false;
 
         public void Validate()
@@ -71,8 +67,7 @@ namespace LuizaEM.Domain.Entities
                 .IsRequired(x => x.Email)
                 .HasMinLenght(x => x.Email, 10, "O nome não pode ser menor que 3 caracteres")
                 .HasMaxLenght(x => x.Email, 60, "O nome não pode ser maior que 60 caracteres")
-                .IsEmail(x => x.Email, "E-mail no formato inválido")
-                
+                .IsEmail(x => x.Email, "E-mail no formato inválido")                
                 .IsGreaterThan(x => x.BirthDate, new DateTime(), "Data inválid");
         }
         #endregion

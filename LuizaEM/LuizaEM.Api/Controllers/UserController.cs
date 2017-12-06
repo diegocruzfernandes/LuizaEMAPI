@@ -36,7 +36,6 @@ namespace LuizaEM.Api.Controllers
             return await ResponseList(result);
         }
 
-
         [HttpGet]
         [Route("v1/user/{id}")]
         public async Task<IActionResult> Get(int id)

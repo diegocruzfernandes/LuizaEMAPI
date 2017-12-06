@@ -11,8 +11,7 @@ namespace LuizaEM.Domain.Tests.Entities
         private string Name = "John Carter";
         private string Email = "teste@email.com";
         private string Password = "123456";
-        private EPermission Permission = EPermission.Admin;
-        
+        private EPermission Permission = EPermission.Admin;        
 
         [TestMethod]
         [TestCategory("User")]
@@ -37,8 +36,6 @@ namespace LuizaEM.Domain.Tests.Entities
             //lenght > 50
             User user3 = new User(0, "John Carter Kenmisubeth Fortintineancar Mashephialin Sutariala", Email, Password, Permission, true);
             Assert.IsFalse(user3.IsValid());
-
-
         }
 
         [TestMethod]
@@ -83,8 +80,6 @@ namespace LuizaEM.Domain.Tests.Entities
         [TestCategory("User")]
         public void ChangeAnInvalidEmaildShouldReturnNotification()
         {
-            //is not null or empty
-
             //length > 10
             User user = new User(0, Name, Email, Password, Permission, true);
             user.ChangeEmail("email");
@@ -99,7 +94,6 @@ namespace LuizaEM.Domain.Tests.Entities
             User user3 = new User(0, Name, Email, Password, Permission, true);
             user3.ChangeEmail("meuemailnaodeveestacomvaloresmaiorque60caracteres@provedor.com");
             Assert.IsFalse(user3.IsValid());
-
         }
 
         [TestMethod]
@@ -108,7 +102,6 @@ namespace LuizaEM.Domain.Tests.Entities
         {
             User user = new User(0, Name, Email, Password, Permission, true);
             Assert.AreEqual(user.Password, ValidationPassword.Encrypt(Password));
-
             user.ResetPassword();
             Assert.AreNotEqual(user.Password, ValidationPassword.Encrypt(Password));
         }
@@ -119,7 +112,6 @@ namespace LuizaEM.Domain.Tests.Entities
         {
             User user = new User(0, Name, Email, Password, Permission, true);
             Assert.IsTrue(user.Active);
-
             user.Deactivate();
             Assert.IsFalse(user.Active);
         }
@@ -129,9 +121,7 @@ namespace LuizaEM.Domain.Tests.Entities
         public void ChangeNameCompareNewWithOld()
         {
             User user = new User(0, Name, Email, Password, Permission, true);
-
-            user.ChangeUserName("John Gabriel");
-            
+            user.ChangeUserName("John Gabriel");            
             Assert.AreNotEqual(user.Username, Name);
             Assert.IsTrue(user.Active);
         }
@@ -141,7 +131,6 @@ namespace LuizaEM.Domain.Tests.Entities
         public void AuthenticateValidation()
         {
             User user = new User(0, Name, Email, Password, Permission, true);
-
             var result = user.Authenticate(Email, Password);
             Assert.IsTrue(result);
         }
