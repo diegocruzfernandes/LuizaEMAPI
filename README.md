@@ -1,6 +1,6 @@
 # Luiza Employee Manager - API
-Autor: Diego Fernandes  - Versão: 1.0.1 (05/12/2017)
-contatos: diegocruzfernandes@hotmail.com
+ Autor: Diego Fernandes  - Versão: 1.0.1 (05/12/2017)
+ contatos: diegocruzfernandes@hotmail.com
 
 ---
 ####  Resumo:
@@ -8,7 +8,7 @@ contatos: diegocruzfernandes@hotmail.com
 Está API de serviço tem como objetivo fornecer uma interface para a manutenção e distribuição de dados referente aos empregados(Employee).
 O serviço está disponivel nas nuvems pelo link [luizaemapi](http://luizaemapi.azurewebsites.net "Luiza EM - API - Azure - Clound")
 Os serviçõs estão padronizados nos comando HTTP/REST, assim como seu comandos/verbos de envios: GET, POST, PUT e DELETE, como em códigos de retorno (HTTP Status Code): 200 Ok, 204 No Content, 403 Forbidden, etc..
-As rotas estão protegidas pelo padrão OAuth 2, não permitindo seu uso sem autorização.
+:warning: Importante : As rotas estão protegidas pelo padrão OAuth 2, não permitindo seu uso sem autorização.
 
 ---
 
@@ -62,8 +62,34 @@ luizaemapi.azurewebsites.net/V1/Department
 
 As rotas foram pensadas no sentido de permitir facil acesso mantendo o padrão nominal
 
--v1/department - Get/Post/Put/Delete
--v1/employee  - Get/Post/Put/Delete
--v1/user - Get/Post/Put/Delete
+- v1/department - Get/Post/Put/Delete
+- v1/employee  - Get/Post/Put/Delete
+- v1/user - Get/Post/Put/Delete
 
-    
+Atravez da documentação de rotas é possivel saber mais detalhes e exemplos de como utiliza-las
+http://luizaemapi.azurewebsites.net/swagger
+
+:warning: Importante :
+Existe um relacionamento de _um para um_ entre Department e Employee, assim ao excluir um Department todos os Employee que fizerem parte daquele Department **também** serão excluido!
+Obs: **ON DELETE CASCADE**
+
+---
+### Sobre o Projeto
+
+O projeto foi desenvolvido sobre a plataforma .Net Framework 4.6.1 
+Na linguagem C#, fazendo uso:
+
+- ASP.Net Core 1.1.0
+- EntityFramework 6.1.3
+- FluentValidator 1.0.5
+- AspNetCore.JwtBearer 1.1.3
+- SQL Server 2012
+
+Como base de arquiterura o projeto se baseou no modelo DDD (Domain Driven Design *Martin Fowler) ficando separados em 4 projetos:
+
+- 1-API - WEB, RESTFul
+- 2-ApplicationService - Canal de comunicação entre (1-API)->(3-Domain) / (1-API)->(4-Infra)
+- 3-Domain - Onde estão as Entidade e os Contratos entre ApplicationService e Infra
+- 4-Infra - Onde fica o Repositorio e Serviços externos (ex: envio de Email)
+
+É importante salientar que o conceito de Entidades foi baseado no padrão **Dominio Rico** com o padrão de **Notification** atraves do uso do FluentValidator.
