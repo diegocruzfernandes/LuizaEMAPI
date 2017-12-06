@@ -9,7 +9,9 @@ As rotas estão protegidas pelo padrão OAuth 2, não permitindo seu uso se auto
 
 ### Como Utilizar:
 Primeiro Acesso:
-As rotas estão bloqueadas, assim é necessário adquirir um TOKEN para fazer uso dos serviços existes.
+Utilizaremos como exemplo o Swagger que está diponivel em http://luizaemapi.azurewebsites.net/swagger
+
+As rotas estão bloqueadas, assim antes de mais nada é necessário adquirir um TOKEN para fazer uso dos serviços existes.
 Como exemplo iremos utilizar um usuario: 'company' com email: 'company@mail.com' e senha 'company'
 
 Atravez da rota: luizaemapi.azurewebsites.net/v1/authenticate deve-ser realizado um POST contendo em seu cabeçado :
@@ -27,4 +29,11 @@ Nos são informado dados como:
 	- user: dados do usuario e sua Role/Regra 
    
 Para acesso as rotas é necessário fazer uma autenticação.
+devemos copiar o valor do Token gerado e clicar em 'Authorize'
+![]({{site.baseurl}}/C:\Users\Diego\Desktop\dados para o teste\documentação\01c.jpg)
+
+em value: devemos inserir o Token da seguinte maneira
+Bearer {seutoken}
+em seguida clicar em Authorize.
+neste momento o Swagger ira inserrir a cada requisição o token atual.
     
