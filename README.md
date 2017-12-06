@@ -1,13 +1,14 @@
 # Luiza Employee Manager - API
- Autor: Diego Fernandes  - Versão: 1.0.1 (05/12/2017)
+ Autor: Diego Fernandes  - Versão: 1.0.1 (05/12/2017)\
  contatos: diegocruzfernandes@hotmail.com
 
 ---
+
 ####  Resumo:
 
 Está API de serviço tem como objetivo fornecer uma interface para a manutenção e distribuição de dados referente aos empregados(Employee).
 O serviço está disponivel nas nuvems pelo link [luizaemapi](http://luizaemapi.azurewebsites.net "Luiza EM - API - Azure - Clound")
-Os serviçõs estão padronizados nos comando HTTP/REST, assim como seu comandos/verbos de envios: GET, POST, PUT e DELETE, como em códigos de retorno (HTTP Status Code): 200 Ok, 204 No Content, 403 Forbidden, etc..
+Os serviçõs estão padronizados nos comando HTTP/REST, assim como seu comandos/verbos de envios: GET, POST, PUT e DELETE, como em códigos de retorno (HTTP Status Code): 200 Ok, 204 No Content, 403 Forbidden, etc..\
 :warning: Importante : As rotas estão protegidas pelo padrão OAuth 2, não permitindo seu uso sem autorização.
 
 ---
@@ -15,7 +16,7 @@ Os serviçõs estão padronizados nos comando HTTP/REST, assim como seu comandos
 ### Como Utilizar:
 Primeiro Acesso:
 Utilizaremos como exemplo o Swagger que está diponivel em http://luizaemapi.azurewebsites.net/swagger
-As rotas estão bloqueadas, assim antes de mais nada é necessário adquirir um TOKEN para fazer uso dos serviços existes.
+As rotas estão bloqueadas, assim antes de mais nada é necessário adquirir um TOKEN para fazer uso dos serviços existes.\
 Como exemplo iremos utilizar um usuario: **company**  com email: **company@mail.com** e senha **company**
 
 Atravez da rota: luizaemapi.azurewebsites.net/v1/authenticate deve-ser realizado um POST contendo em seu cabeçalho :
@@ -93,3 +94,11 @@ Como base de arquiterura o projeto se baseou no modelo DDD (Domain Driven Design
 - 4-Infra - Onde fica o Repositorio e Serviços externos (ex: envio de Email)
 
 É importante salientar que o conceito de Entidades foi baseado no padrão **Dominio Rico** com o padrão de **Notification** atraves do uso do FluentValidator.
+
+
+### Ha Faze / To Do
+
+1 - Teste de integração - Apenas foi feito Smoke Tests
+2 - Melhorar a cobertura de código e testes com ferramentas como OpenCover ou SonarQube 
+3 - Implementar o serviço de envio de E-mail's
+4 - Logs para Autenticações e Falhas
