@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Reflection;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
@@ -74,6 +75,8 @@ namespace LuizaEM.Api.Controllers
 
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
+            EPermission permission = (EPermission)_user.Permission;
+
             var response = new
             {
                 token = encodedJwt,
@@ -84,7 +87,7 @@ namespace LuizaEM.Api.Controllers
                     name = _user.Username.ToString(),
                     email = _user.Email.ToString(),
                     username = _user.Username.ToString(),
-                    role = (EPermission)_user.Permission
+                    role = permission.ToString()
                 }
             };
 
@@ -126,10 +129,11 @@ namespace LuizaEM.Api.Controllers
                 new GenericIdentity(user.Email, "Token"),
                 new[]
                 {
-                    new Claim("LuizaEMAPI", "User"),
-                    new Claim("LuizaEMAPI", "Admin")
+                    new Claim("LuizaEMAPI", "Admin"),
+                    new Claim("LuizaEMAPI", "User")
+                    
                 }));
-        }
+        }       
 
         #endregion
     }

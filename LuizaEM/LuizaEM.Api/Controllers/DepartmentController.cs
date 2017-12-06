@@ -18,15 +18,20 @@ namespace LuizaEM.Api.Controllers
         }
 
         [HttpGet]
-        [Route("v1/department")]
+        [Route("v1/department/{id}")]
+        public IActionResult Get(int id)
+        {
+            return Ok(_service.Get(id));
+        }
+
+        [HttpGet]
+        [Route("v1/departments")]
         public async Task<IActionResult> Get()
         {
             var result = _service.Get();
             return await ResponseList(result);
         }
 
-
-        //TODO: Resolver
         [HttpGet]
         [Route("v1/department")]
         public async Task<IActionResult> GetByRange(
@@ -39,13 +44,7 @@ namespace LuizaEM.Api.Controllers
             return await ResponseList(result);
         }
 
-        [HttpGet]
-        [Route("v1/department/{id}")]
-        public IActionResult Get(int id)
-        {
-            return Ok(_service.Get(id));
-        }
-
+     
         [HttpDelete]
         [Route("v1/department/{id}")]
         [Authorize(Policy = "Admin")]

@@ -22,8 +22,8 @@ namespace LuizaEM.Api.Controllers
             [FromQuery(Name = "page_size")]int page_size,
             [FromQuery(Name = "page")]int page,
             [FromQuery(Name = "full")]bool full)
-        {            
-                var skip = (page - 1) * page_size;
+        {
+               var skip = (page - 1) * page_size;
 
                 if (full)
                 {
@@ -35,7 +35,6 @@ namespace LuizaEM.Api.Controllers
                     var result = _service.GetSimpleInformation(skip, page_size);
                     return await ResponseList(result);
                 }
-           
         }
 
         [HttpGet]

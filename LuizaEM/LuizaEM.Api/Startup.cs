@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using System;
 using LuizaEM.Api.Security;
+using LuizaEM.Infra.Service;
 
 namespace LuizaEM.Api
 {
@@ -56,8 +57,9 @@ namespace LuizaEM.Api
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("User", policy => policy.RequireClaim("LuizaEMAPI", "User"));
                 options.AddPolicy("Admin", policy => policy.RequireClaim("LuizaEMAPI", "Admin"));
+                options.AddPolicy("User", policy => policy.RequireClaim("LuizaEMAPI", "User"));
+               
             });            
 
             services.Configure<TokenOptions>(options =>
@@ -82,6 +84,8 @@ namespace LuizaEM.Api
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<IEmployeeAppService, EmployeeAppService>();
 
+            services.AddTransient<IEmailService, EmailService>();
+
             services.AddSwaggerDocumentation();           
 
         }
@@ -94,8 +98,7 @@ namespace LuizaEM.Api
 
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                
+                app.UseDeveloperExceptionPage();                
             }  
 
             var tokenValidationParameters = new TokenValidationParameters
@@ -132,7 +135,7 @@ namespace LuizaEM.Api
             app.UseMvc();
 
             //Add connections string existent in file appsetting.json
-            Runtime.ConnectionString = Configuration.GetConnectionString("ConnStr");
+            Runtime.ConnectionString = Configuration.GetConnectionString("ConnStrLocal");
         }
     }
 }
