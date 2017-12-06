@@ -29,11 +29,11 @@ Exemplo:
 >curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: text/plain' -d 'Email=company%40mail.com&Password=company' 'http://luizaemapi.azurewebsites.net/v1/authenticate
 ```
 
-![alt text](http://uploaddeimagens.com.br/images/001/201/321/full/01a.jpg)
+![alt text](http://uploaddeimagens.com.br/images/001/201/435/full/01a.png)
 
 É esperado no Corpo/Body um JSON com resposta:
 
-![alt text](http://uploaddeimagens.com.br/images/001/201/322/full/01b.jpg)
+![alt text](http://uploaddeimagens.com.br/images/001/201/438/full/01bb.png)
 
 Nos são informado dados como:
 - token: valor encriptografado da chave de acesso. 
@@ -41,10 +41,7 @@ Nos são informado dados como:
 - user: dados do usuario e sua Role/Regra 
    
 Para acesso as rotas é necessário fazer uma autenticação.
-devemos copiar o valor do Token gerado e clicar em 'Authorize'
-
-![alt text](http://uploaddeimagens.com.br/images/001/201/323/original/01c.jpg)
-
+devemos copiar o valor do Token gerado e clicar em 'Authorize'\
 em value: devemos inserir o Token da seguinte maneira
 *Bearer {seutoken}*
 em seguida clicar em Authorize.
@@ -56,9 +53,8 @@ Exemplo:
 luizaemapi.azurewebsites.net/V1/Department
 ```
 
-![alt text](http://uploaddeimagens.com.br/images/001/201/323/original/01c.jpg)
-
 ---
+
 ### Rotas
 
 As rotas foram pensadas no sentido de permitir facil acesso mantendo o padrão nominal
@@ -96,7 +92,7 @@ Como base de arquiterura o projeto se baseou no modelo DDD (Domain Driven Design
 É importante salientar que o conceito de Entidades foi baseado no padrão **Dominio Rico** com o padrão de **Notification** atraves do uso do FluentValidator.
 
 
-### Ha Faze / To Do
+### To Do
 
 1 - Teste de integração - Apenas foi feito Smoke Tests
 2 - Melhorar a cobertura de código e testes com ferramentas como OpenCover ou SonarQube 
