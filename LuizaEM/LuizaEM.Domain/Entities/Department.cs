@@ -1,9 +1,4 @@
 ﻿using FluentValidator;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LuizaEM.Domain.Entities
 {
@@ -11,6 +6,7 @@ namespace LuizaEM.Domain.Entities
     {
         #region Constructor
         protected Department() { }
+
         public Department(int id, string name, string description, bool active)
         {
             Id = id;
@@ -40,7 +36,9 @@ namespace LuizaEM.Domain.Entities
         }
 
         public void Activate() => Active = true;
+
         public void Deactivate() => Active = false;
+
         public void Validate()
         {
             new ValidationContract<Department>(this)

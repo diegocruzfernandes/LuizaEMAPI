@@ -1,6 +1,5 @@
 ﻿using LuizaEM.Domain.Commands.UserCommands;
 using LuizaEM.Domain.Entities;
-using System;
 using System.Collections.Generic;
 
 namespace LuizaEM.Domain.Repositories

@@ -1,10 +1,6 @@
 ﻿using FluentValidator;
 using LuizaEM.Domain.Shared;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LuizaEM.Domain.Entities
 {
@@ -55,6 +51,7 @@ namespace LuizaEM.Domain.Entities
         }
 
         public void Activate() => Active = true;
+
         public void Deactivate() => Active = false;
 
         public void ChangeUserName(string username)
@@ -92,5 +89,4 @@ namespace LuizaEM.Domain.Entities
         }
         #endregion
     }
-
 }

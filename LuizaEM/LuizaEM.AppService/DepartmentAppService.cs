@@ -15,11 +15,11 @@ namespace LuizaEM.AppService
         {
             _repository = repository;
         }
-        
+
         public Department Create(CreateDepartmentCommand command)
         {
             var depart = new Department(0, command.Name, command.Description, command.Active);
-            
+
             if (_repository.DepartmentExists(command.Name))
                 AddNotification("Department", "O Departamento já existe!");
 
@@ -34,7 +34,7 @@ namespace LuizaEM.AppService
             var depart = _repository.Get(id);
 
             if (depart == null)
-               AddNotification("Department", "Departamento não foi encontrado");
+                AddNotification("Department", "Departamento não foi encontrado");
 
             return depart;
         }
@@ -52,7 +52,6 @@ namespace LuizaEM.AppService
         public Department Update(EditDepartmentCommand command)
         {
             var depart = _repository.Get(command.Id);
-
             depart.UpdateData(command.Name, command.Description, command.Active);
 
             if (depart.IsValid())
@@ -77,6 +76,5 @@ namespace LuizaEM.AppService
         {
             return Notifications;
         }
-
     }
 }

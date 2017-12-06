@@ -37,7 +37,6 @@ namespace LuizaEM.Domain.Tests.Entities
             //length < 50
             Employee employee3 = new Employee(0, "John Carter Kenmisubeth Fortintineancar Mashephialin Sutariala", LastName, Email, DepartId, BirthDate, true);
             Assert.IsFalse(employee3.IsValid());
-
         }
 
         [TestMethod]
@@ -85,9 +84,7 @@ namespace LuizaEM.Domain.Tests.Entities
             Employee employee = new Employee(0, FirstName, LastName, Email, DepartId, BirthDate, true);
 
             var FullName = employee.FullName();
-
             var MockFullName = $"{FirstName} {LastName}";
-
             Assert.AreEqual(FullName, MockFullName);
         }
 
@@ -98,17 +95,14 @@ namespace LuizaEM.Domain.Tests.Entities
             Employee employee = new Employee(0, FirstName, LastName, Email, DepartId, BirthDate, true);
 
             employee.UpdateData("Michael", "Stark", "michael@mail.com", 9, new DateTime(1987, 5, 22), false);
-
             Assert.AreNotEqual(employee.FirstName, FirstName);
             Assert.AreNotEqual(employee.LastName, LastName);
             Assert.AreNotEqual(employee.Email, Email);
             Assert.AreNotEqual(employee.DepartmentId, DepartId);
             Assert.AreNotEqual(employee.BirthDate, BirthDate);
             Assert.IsFalse(employee.Active);            
-            
             Assert.IsTrue(employee.IsValid());
-        }
-       
+        }       
 
         [TestMethod]
         [TestCategory("Employee")]
@@ -120,6 +114,5 @@ namespace LuizaEM.Domain.Tests.Entities
             employee.Deactivate();
             Assert.IsFalse(employee.Active);
         }
-
     }
 }

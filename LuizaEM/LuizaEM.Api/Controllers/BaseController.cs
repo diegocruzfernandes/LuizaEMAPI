@@ -10,7 +10,6 @@ namespace LuizaEM.Api.Controllers
 {
     public class BaseController : Controller
     {
-
         private readonly IUow _uow;
 
         public BaseController(IUow uow)
@@ -32,8 +31,7 @@ namespace LuizaEM.Api.Controllers
                     });
                 }
                 catch (Exception ex)
-                {
-                    //Create the LOG FILE
+                {            
                     return  BadRequest(new
                     {
                         success = false,
@@ -58,8 +56,7 @@ namespace LuizaEM.Api.Controllers
                 return Ok(result);
             }
             catch
-            {
-                //Create the LOG FILE
+            {                
                 return BadRequest(new
                 {
                     success = false,
@@ -71,14 +68,11 @@ namespace LuizaEM.Api.Controllers
 
         public async Task<IActionResult> ResponseNullOrEmpty()
         {
-            //Create the LOG FILE
             return BadRequest(new
             {
                 success = false,
                 errors = new[] { "Dados não preenchidos ou inválidos." }
             });
-
-
         }
     }
 }

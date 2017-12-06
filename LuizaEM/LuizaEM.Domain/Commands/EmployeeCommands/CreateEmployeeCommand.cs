@@ -1,9 +1,4 @@
-﻿using LuizaEM.Domain.Commands.DepartmentCommands;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace LuizaEM.Domain.Commands.EmployeeCommands
 {

@@ -1,7 +1,6 @@
 ﻿using LuizaEM.Domain.Repositories;
 using System.Collections.Generic;
 using System.Linq;
-using LuizaEM.Domain.Commands.DepartmentCommands;
 using LuizaEM.Domain.Entities;
 using LuizaEM.Infra.Context;
 

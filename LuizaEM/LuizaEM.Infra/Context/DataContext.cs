@@ -4,8 +4,7 @@ using LuizaEM.Infra.Maps;
 using System.Data.Entity;
 
 namespace LuizaEM.Infra.Context
-{
-   
+{   
     public class DataContext : DbContext
     {
         public DataContext() : base(Runtime.ConnectionString)

@@ -8,7 +8,7 @@ using FluentValidator;
 
 namespace LuizaEM.AppService
 {
-    public class UserAppService : Notifiable, IUserAppService 
+    public class UserAppService : Notifiable, IUserAppService
     {
         private readonly IUserRepository _repository;
         private readonly IEmailService _emailService;
@@ -16,7 +16,7 @@ namespace LuizaEM.AppService
         public UserAppService(IUserRepository repository, IEmailService emailService)
         {
             _repository = repository;
-            _emailService = emailService;         
+            _emailService = emailService;
         }
 
         public UserCommand Create(CreateUserCommand command)
@@ -27,16 +27,15 @@ namespace LuizaEM.AppService
             {
                 AddNotification("User", "Usuário já cadastrado!");
                 return null;
-            }   
+            }
 
             if (user.IsValid())
                 _repository.Save(user);
 
             var usercmd = ConvertUserToUserCmdAndAddNotifications(user);
-
             return usercmd;
         }
-    
+
         public UserCommand Delete(int id)
         {
             var user = _repository.Get(id);
@@ -47,7 +46,6 @@ namespace LuizaEM.AppService
                 _repository.Delete(user);
 
             var usercmd = ConvertUserToUserCmdAndAddNotifications(user);
-
             return usercmd;
         }
 
@@ -70,21 +68,20 @@ namespace LuizaEM.AppService
         public User GetByEmail(string email)
         {
             return _repository.GetByEmail(email);
-        }       
+        }
 
         public UserCommand Update(EditUserCommand command)
         {
             var user = _repository.Get(command.Id);
-
             user.ChangeUserName(command.Username);
             user.ChangeEmail(command.Email);
+
             if (command.Active) user.Activate(); else user.Deactivate();
 
             if (user.IsValid())
                 _repository.Update(user);
 
             var usercmd = ConvertUserToUserCmdAndAddNotifications(user);
-
             return usercmd;
         }
 
@@ -94,13 +91,10 @@ namespace LuizaEM.AppService
             {
                 Username = user.Username,
                 Email = user.Email,
-                //Password = user.Password,
                 Permission = (int)user.Permission,
                 Active = user.Active
             };
-
             AddNotifications(user.Notifications);
-
             return usercmd;
         }
 
@@ -112,18 +106,16 @@ namespace LuizaEM.AppService
             {
                 user.AddNotification("User", "Usário não encontrado");
                 return user;
-            }              
+            }
 
             var newPassword = user.ResetPassword();
             _repository.Update(user);
-
             _emailService.Send(
                 user.Username,
                 user.Email,
                  string.Format("Luiza Employee Manager - Important", user.Username),
                  string.Format($"Olá, sua nova senha é: {newPassword}.", user.Username)
-                );                       
-
+                );
             return user;
         }
 
@@ -131,7 +123,5 @@ namespace LuizaEM.AppService
         {
             return Notifications;
         }
-
-       
     }
 }

@@ -80,7 +80,6 @@ namespace LuizaEM.Api.Controllers
         {
             var result = _service.Update(command);
             return await Response(result, result.Notifications);
-
         }
     }
 }

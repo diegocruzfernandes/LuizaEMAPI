@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using LuizaEM.Domain.Shared;
 
 namespace LuizaEM.Domain.Test.Shared
@@ -12,12 +11,8 @@ namespace LuizaEM.Domain.Test.Shared
         public void GivenAnStringReturnValueEncripty()
         {
             var password = "mypass";
-
             var password_encripted = ValidationPassword.Encrypt(password);
-
             Assert.AreNotEqual(password, password_encripted);
-
         }
-
     }
 }

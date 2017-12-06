@@ -14,7 +14,6 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Reflection;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
@@ -35,7 +34,7 @@ namespace LuizaEM.Api.Controllers
             ThrowIfInvalidOptions(_tokenOptions);
 
             _serializerSettings = new JsonSerializerSettings
-            {  //O Asp.net traz em CamelCase e o JSON é tudo minuscula (aqui padroniza para JSON)
+            {  
                 Formatting = Formatting.Indented,
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
@@ -73,9 +72,7 @@ namespace LuizaEM.Api.Controllers
                 signingCredentials: _tokenOptions.SiniginCredential);
 
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
-
             EPermission permission = (EPermission)_user.Permission;
-
             var response = new
             {
                 token = encodedJwt,
@@ -89,7 +86,6 @@ namespace LuizaEM.Api.Controllers
                     role = permission.ToString()
                 }
             };
-
             var json = JsonConvert.SerializeObject(response, _serializerSettings);
             return new OkObjectResult(json);
         }
@@ -129,11 +125,9 @@ namespace LuizaEM.Api.Controllers
                 new[]
                 {
                     new Claim("LuizaEMAPI", "Admin"),
-                    new Claim("LuizaEMAPI", "User")
-                    
+                    new Claim("LuizaEMAPI", "User")                    
                 }));
         }       
-
         #endregion
     }
 }
