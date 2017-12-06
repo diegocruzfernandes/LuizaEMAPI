@@ -35,7 +35,7 @@ Exemplo:
 
 ![alt text](http://uploaddeimagens.com.br/images/001/201/438/full/01bb.png)
 
-Nos são informado dados como:
+São informado dados como:
 - token: valor encriptografado da chave de acesso. 
 - expires: tempo de duração do token em segundos.
 - user: dados do usuario e sua Role/Regra 
@@ -81,6 +81,9 @@ Na linguagem C#, fazendo uso:
 - FluentValidator 1.0.5
 - AspNetCore.JwtBearer 1.1.3
 - SQL Server 2012
+
+Para testes o projeto está rodando no Clound Azure em uma VM, junto com o Bando de Dados SQL Server.
+Há uma *Integração Continua* entre o *GitHub* e o *Azure*, atravez da Pull Request na branch Master do GitHub.
 
 Como base de arquiterura o projeto se baseou no modelo DDD (Domain Driven Design *Martin Fowler) ficando separados em 4 projetos:
 
