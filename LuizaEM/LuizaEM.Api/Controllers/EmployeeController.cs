@@ -1,10 +1,8 @@
 ﻿using LuizaEM.Domain.Commands.EmployeeCommands;
 using LuizaEM.Domain.Services;
 using LuizaEM.Infra.Transactions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace LuizaEM.Api.Controllers
@@ -17,17 +15,15 @@ namespace LuizaEM.Api.Controllers
         {
             _service = service;
         }
-                
+
         [HttpGet]
         [Route("v1/employee")]
         public async Task<IActionResult> GetByRange(
-            [FromQuery(Name="page_size")]int page_size, 
-            [FromQuery(Name="page")]int page,
+            [FromQuery(Name = "page_size")]int page_size,
+            [FromQuery(Name = "page")]int page,
             [FromQuery(Name = "full")]bool full)
         {
-            if (page_size > 0 && page > 0)
-            {
-                var skip = (page - 1) * page_size;
+               var skip = (page - 1) * page_size;
 
                 if (full)
                 {
@@ -36,17 +32,9 @@ namespace LuizaEM.Api.Controllers
                 }
                 else
                 {
-                    
                     var result = _service.GetSimpleInformation(skip, page_size);
                     return await ResponseList(result);
                 }
-                
-            }
-            else
-            {                
-                var result = _service.Get();
-                return await ResponseList(result);
-            }
         }
 
         [HttpGet]
@@ -54,11 +42,10 @@ namespace LuizaEM.Api.Controllers
         public async Task<IActionResult> Find(
            [FromQuery(Name = "firstname")]string firstname,
            [FromQuery(Name = "lastname")]string lastname,
-           [FromQuery(Name = "match")]bool match)         
+           [FromQuery(Name = "match")]bool match)
         {
-
             var result = _service.Find(firstname, lastname, match);
-            return await ResponseList(result);            
+            return await ResponseList(result);
         }
 
         [HttpGet]
@@ -70,6 +57,7 @@ namespace LuizaEM.Api.Controllers
 
         [HttpDelete]
         [Route("v1/employee/{id}")]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = _service.Delete(id);
@@ -78,6 +66,7 @@ namespace LuizaEM.Api.Controllers
 
         [HttpPost]
         [Route("v1/employee")]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Post([FromBody] CreateEmployeeCommand command)
         {
             var result = _service.Create(command);
@@ -86,6 +75,7 @@ namespace LuizaEM.Api.Controllers
 
         [HttpPut]
         [Route("v1/employee")]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Update([FromBody] EditEmployeeCommand command)
         {
             var result = _service.Update(command);

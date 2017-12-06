@@ -6,9 +6,9 @@ using System.Collections.Generic;
 namespace LuizaEM.Domain.Services
 {
     public interface IDepartmentAppService
-    {
-        IEnumerable<DepartmentCommand> Get();
-        IEnumerable<DepartmentCommand> Get(int skip, int take);
+    {   
+        IEnumerable<Department> Get();
+        IEnumerable<Department> Get(int skip, int take);
         Department Get(int id);
         Department Create(CreateDepartmentCommand command);
         Department Update(EditDepartmentCommand command);

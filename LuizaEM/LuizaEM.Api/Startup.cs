@@ -10,13 +10,13 @@ using LuizaEM.Infra.Repositories;
 using LuizaEM.Domain.Services;
 using LuizaEM.AppService;
 using System.Text;
-using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.Configuration;
 using LuizaEM.Domain.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using System;
 using LuizaEM.Api.Security;
+using LuizaEM.Infra.Service;
 
 namespace LuizaEM.Api
 {
@@ -44,7 +44,6 @@ namespace LuizaEM.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             //Block all Routers
             services.AddMvc(config =>
             {
@@ -58,9 +57,10 @@ namespace LuizaEM.Api
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("User", policy => policy.RequireClaim("LuizaEMAPI", "User"));
                 options.AddPolicy("Admin", policy => policy.RequireClaim("LuizaEMAPI", "Admin"));
-            });            
+                options.AddPolicy("User", policy => policy.RequireClaim("LuizaEMAPI", "User"));
+
+            });
 
             services.Configure<TokenOptions>(options =>
             {
@@ -68,7 +68,7 @@ namespace LuizaEM.Api
                 options.Audience = AUDIENCE;
                 options.SiniginCredential = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256);
             });
-            
+
 
             //services.AddTransient - new instance
             //services.AddScoped - singleton
@@ -84,13 +84,14 @@ namespace LuizaEM.Api
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<IEmployeeAppService, EmployeeAppService>();
 
+            services.AddTransient<IEmailService, EmailService>();
+
             services.AddSwaggerDocumentation();
-           
 
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {           
+        {
             app.UseSwaggerDocumentation();
 
             loggerFactory.AddConsole();
@@ -98,8 +99,12 @@ namespace LuizaEM.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                
-            }  
+                Runtime.ConnectionString = Configuration.GetConnectionString("ConnStrLocal");
+            }
+            else
+            {
+                Runtime.ConnectionString = Configuration.GetConnectionString("ConnStr");
+            }
 
             var tokenValidationParameters = new TokenValidationParameters
             {
@@ -135,7 +140,7 @@ namespace LuizaEM.Api
             app.UseMvc();
 
             //Add connections string existent in file appsetting.json
-            Runtime.ConnectionString = Configuration.GetConnectionString("ConnStr");
+
         }
     }
 }

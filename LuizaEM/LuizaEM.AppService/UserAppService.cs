@@ -4,7 +4,6 @@ using LuizaEM.Domain.Commands.UserCommands;
 using LuizaEM.Domain.Entities;
 using LuizaEM.Domain.Repositories;
 using LuizaEM.Domain.Shared;
-using System;
 using FluentValidator;
 
 namespace LuizaEM.AppService
@@ -12,10 +11,12 @@ namespace LuizaEM.AppService
     public class UserAppService : Notifiable, IUserAppService 
     {
         private readonly IUserRepository _repository;
+        private readonly IEmailService _emailService;
 
-        public UserAppService(IUserRepository repository)
+        public UserAppService(IUserRepository repository, IEmailService emailService)
         {
-            _repository = repository;           
+            _repository = repository;
+            _emailService = emailService;         
         }
 
         public UserCommand Create(CreateUserCommand command)
@@ -35,7 +36,6 @@ namespace LuizaEM.AppService
 
             return usercmd;
         }
-
     
         public UserCommand Delete(int id)
         {
@@ -70,9 +70,7 @@ namespace LuizaEM.AppService
         public User GetByEmail(string email)
         {
             return _repository.GetByEmail(email);
-        }
-
-       
+        }       
 
         public UserCommand Update(EditUserCommand command)
         {
@@ -116,11 +114,15 @@ namespace LuizaEM.AppService
                 return user;
             }              
 
-            user.ResetPassword();
-            //TODO: Salvar e enviar o email
+            var newPassword = user.ResetPassword();
             _repository.Update(user);
-            //Enviar EMAIL
-            user.AddNotification("User", "a senha nova foi enviada por email");             
+
+            _emailService.Send(
+                user.Username,
+                user.Email,
+                 string.Format("Luiza Employee Manager - Important", user.Username),
+                 string.Format($"Olá, sua nova senha é: {newPassword}.", user.Username)
+                );                       
 
             return user;
         }

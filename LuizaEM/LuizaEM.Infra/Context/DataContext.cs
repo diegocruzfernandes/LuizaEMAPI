@@ -8,7 +8,6 @@ namespace LuizaEM.Infra.Context
    
     public class DataContext : DbContext
     {
-        //Local = @"Data Source=DON\SQLEXPRESS;Initial Catalog=LuizaDB; User ID=sa; Password=admin;"
         public DataContext() : base(Runtime.ConnectionString)
         {
             Configuration.LazyLoadingEnabled = false;

@@ -9,6 +9,7 @@ namespace LuizaEM.Domain.Entities
 {
     public class Department : Notifiable
     {
+        #region Constructor
         protected Department() { }
         public Department(int id, string name, string description, bool active)
         {
@@ -19,14 +20,16 @@ namespace LuizaEM.Domain.Entities
 
             Validate();
         }
+        #endregion
 
-
+        #region Attribute
         public int Id { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         public bool Active { get; private set; }
+        #endregion
 
-
+        #region Methods
         public void UpdateData(string name, string description, bool active)
         {
             Name = name;
@@ -35,7 +38,6 @@ namespace LuizaEM.Domain.Entities
 
             Validate();
         }
-
 
         public void Activate() => Active = true;
         public void Deactivate() => Active = false;
@@ -47,5 +49,6 @@ namespace LuizaEM.Domain.Entities
                 .HasMaxLenght(x => x.Name, 60, "O  nome não pode ser maior que 60 caracteres")
                 .HasMaxLenght(x => x.Description, 200, "A descrição não pode ser maior que 200 caracteres");
         }
+        #endregion
     }
 }

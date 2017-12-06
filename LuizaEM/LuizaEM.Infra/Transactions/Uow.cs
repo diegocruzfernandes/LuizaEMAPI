@@ -1,9 +1,7 @@
 ﻿using LuizaEM.Infra.Context;
 
 namespace LuizaEM.Infra.Transactions
-{
-
-   
+{   
     public class Uow : IUow
     {
         private readonly DataContext _context;

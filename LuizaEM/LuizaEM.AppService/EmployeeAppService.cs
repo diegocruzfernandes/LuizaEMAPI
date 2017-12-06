@@ -3,11 +3,7 @@ using LuizaEM.Domain.Commands.EmployeeCommands;
 using LuizaEM.Domain.Entities;
 using LuizaEM.Domain.Repositories;
 using LuizaEM.Domain.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LuizaEM.AppService
 {
@@ -112,8 +108,6 @@ namespace LuizaEM.AppService
             return simpleListEmployees;
         }
 
-
-
         public Employee Update(EditEmployeeCommand command)
         {
             var employee = _repository.Get(command.Id);
@@ -121,7 +115,17 @@ namespace LuizaEM.AppService
             employee.UpdateData(command.FirstName, command.LastName, command.Email, command.DepartmentId, command.BirthDate, command.Active);
                       
             if (employee.IsValid())
+            {
+                if (employee.Department.Id != command.DepartmentId)
+                    employee.Department = _repositoryDepart.Get(command.DepartmentId);
+
                 _repository.Update(employee);
+            }
+              
+
+
+
+               
 
             return employee;
         }

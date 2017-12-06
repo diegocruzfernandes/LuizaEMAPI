@@ -11,7 +11,7 @@ namespace LuizaEM.Domain.Tests.Entities
         private string Name = "John Carter";
         private string Email = "teste@email.com";
         private string Password = "123456";
-        private EPermission Permission = EPermission.Default;
+        private EPermission Permission = EPermission.Admin;
         
 
         [TestMethod]

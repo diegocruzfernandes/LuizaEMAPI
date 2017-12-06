@@ -15,21 +15,16 @@ namespace LuizaEM.Infra.Repositories
         {
             _context = context;
         }
+
         public bool DepartmentExists(string name)
         {
             return _context.Departments.Any(x => x.Name == name);
         }
 
-        public IEnumerable<DepartmentCommand> Get()
+        public IEnumerable<Department> Get()
         {
             return _context
                  .Departments
-                 .Select(x => new DepartmentCommand
-                 {
-                     Name = x.Name.ToString(),
-                     Description = x.Description.ToString(),
-                     Active = x.Active
-                 })
                  .OrderBy(x => x.Name)
                  .ToList();
         }
@@ -39,16 +34,10 @@ namespace LuizaEM.Infra.Repositories
             return _context.Departments.AsNoTracking().FirstOrDefault(x => x.Id == id);
         }
 
-        public IEnumerable<DepartmentCommand> Get(int skip, int take)
+        public IEnumerable<Department> Get(int skip, int take)
         {
             return _context
                .Departments
-               .Select(x => new DepartmentCommand
-               {
-                   Name = x.Name.ToString(),
-                   Description = x.Description.ToString(),
-                   Active = x.Active
-               })
                .OrderBy(x => x.Name)
                .Skip(skip)
                .Take(take)

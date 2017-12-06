@@ -3,6 +3,7 @@ using LuizaEM.Api.Security;
 using LuizaEM.Domain.Commands.UserCommands;
 using LuizaEM.Domain.Entities;
 using LuizaEM.Domain.Services;
+using LuizaEM.Domain.Shared;
 using LuizaEM.Infra.Transactions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Reflection;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading.Tasks;
@@ -38,8 +40,7 @@ namespace LuizaEM.Api.Controllers
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
         }
-
-
+        
         [HttpPost]
         [AllowAnonymous]
         [Route("v1/authenticate")]
@@ -73,6 +74,8 @@ namespace LuizaEM.Api.Controllers
 
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
+            EPermission permission = (EPermission)_user.Permission;
+
             var response = new
             {
                 token = encodedJwt,
@@ -83,7 +86,7 @@ namespace LuizaEM.Api.Controllers
                     name = _user.Username.ToString(),
                     email = _user.Email.ToString(),
                     username = _user.Username.ToString(),
-                    role = _user.Permission.ToString()
+                    role = permission.ToString()
                 }
             };
 
@@ -125,10 +128,11 @@ namespace LuizaEM.Api.Controllers
                 new GenericIdentity(user.Email, "Token"),
                 new[]
                 {
-                    new Claim("LuizaEMAPI", "User"),
-                    new Claim("LuizaEMAPI", "Admin")
+                    new Claim("LuizaEMAPI", "Admin"),
+                    new Claim("LuizaEMAPI", "User")
+                    
                 }));
-        }
+        }       
 
         #endregion
     }

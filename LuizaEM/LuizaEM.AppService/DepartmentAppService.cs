@@ -1,10 +1,6 @@
 ﻿using FluentValidator;
 using LuizaEM.Domain.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using LuizaEM.Domain.Commands.DepartmentCommands;
 using LuizaEM.Domain.Entities;
 using LuizaEM.Domain.Repositories;
@@ -19,8 +15,7 @@ namespace LuizaEM.AppService
         {
             _repository = repository;
         }
-
-
+        
         public Department Create(CreateDepartmentCommand command)
         {
             var depart = new Department(0, command.Name, command.Description, command.Active);
@@ -39,17 +34,17 @@ namespace LuizaEM.AppService
             var depart = _repository.Get(id);
 
             if (depart == null)
-               AddNotification("Department", "Nada foi encontrado");
+               AddNotification("Department", "Departamento não foi encontrado");
 
             return depart;
         }
 
-        public IEnumerable<DepartmentCommand> Get()
+        public IEnumerable<Department> Get()
         {
             return _repository.Get();
         }
 
-        public IEnumerable<DepartmentCommand> Get(int skip, int take)
+        public IEnumerable<Department> Get(int skip, int take)
         {
             return _repository.Get(skip, take);
         }
