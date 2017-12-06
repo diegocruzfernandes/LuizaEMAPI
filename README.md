@@ -1,5 +1,5 @@
 # Luiza Employee Manager - API
- Autor: Diego Fernandes  - Versão: 1.0.1 (05/12/2017)\
+ Autor: Diego Fernandes  - Versão: 1.0.2 (06/12/2017)\
  contatos: diegocruzfernandes@hotmail.com
 
 ---
