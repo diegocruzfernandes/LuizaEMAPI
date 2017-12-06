@@ -18,18 +18,20 @@ Utilizaremos como exemplo o Swagger que está diponivel em http://luizaemapi.azu
 As rotas estão bloqueadas, assim antes de mais nada é necessário adquirir um TOKEN para fazer uso dos serviços existes.
 Como exemplo iremos utilizar um usuario: **company**  com email: **company@mail.com** e senha **company**
 
-Atravez da rota: luizaemapi.azurewebsites.net/v1/authenticate deve-ser realizado um POST contendo em seu cabeçado :
-Content-Type: application/x-www-form-urlencoded
-Accept: text/plain: email={youremail} % password={yourpassword}
+Atravez da rota: luizaemapi.azurewebsites.net/v1/authenticate deve-ser realizado um POST contendo em seu cabeçalho :
+
+>Content-Type: application/x-www-form-urlencoded
+>Accept: text/plain: email={youremail} % password={yourpassword}
 
 Exemplo: 
 >curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: text/plain' -d 'Email=company%40mail.com&Password=company' 'http://luizaemapi.azurewebsites.net/v1/authenticate
 
-![]({{site.baseurl}}http://uploaddeimagens.com.br/images/001/201/307/full/01b.jpg)
+![alt text](http://uploaddeimagens.com.br/images/001/201/307/full/01b.jpg)
 
 É esperado no Corpo/Body um JSON com resposta:
 
-![]({{site.baseurl}}http://uploaddeimagens.com.br/imagens/01a-jpg--7)
+![alt text](http://uploaddeimagens.com.br/images/001/201/307/full/01b.jpg)
+
 Nos são informado dados como:
 	- token: valor encriptografado da chave de acesso. 
     - expires: tempo de duração do token em segundos.
@@ -37,7 +39,8 @@ Nos são informado dados como:
    
 Para acesso as rotas é necessário fazer uma autenticação.
 devemos copiar o valor do Token gerado e clicar em 'Authorize'
-![]({{site.baseurl}}/C:\Users\Diego\Desktop\dados para o teste\documentação\01c.jpg)
+
+![alt text](http://uploaddeimagens.com.br/images/001/201/307/full/01b.jpg)
 
 em value: devemos inserir o Token da seguinte maneira
 Bearer {seutoken}
