@@ -7,7 +7,7 @@
 ####  Resumo:
 
 Está API de serviço tem como objetivo fornecer uma interface para a manutenção e distribuição de dados referente aos empregados(Employee).
-O serviço está disponivel nas nuvems pelo link [luizaemapi](http://luizaemapi.azurewebsites.net "Luiza EM - API - Azure - Clound")
+O serviço está disponível nas nuvens pelo link [luizaemapi](http://luizaemapi.azurewebsites.net "Luiza EM - API - Azure - Clound")
 Os serviços estão padronizados nos comando HTTP/REST, assim como seu comandos/verbos de envios: GET, POST, PUT e DELETE bem como os códigos de retorno (HTTP Status Code): 200 Ok, 204 No Content, 403 Forbidden, etc..\
 :warning: Importante : As rotas estão protegidas pelo padrão OAuth 2 e não permite seu uso sem autorização.
 
@@ -15,16 +15,16 @@ Os serviços estão padronizados nos comando HTTP/REST, assim como seu comandos/
 
 ### Como Utilizar:
 Primeiro Acesso:\
-Utilizaremos como exemplo o Swagger que está diponivel em http://luizaemapi.azurewebsites.net/swagger\
+Utilizaremos como exemplo o Swagger que está diponível em http://luizaemapi.azurewebsites.net/swagger\
 As rotas estão bloqueadas, assim antes de mais nada é necessário adquirir um TOKEN para fazer uso dos serviços existentes.\
-Como exemplo iremos utilizar um usuario: **company**  com email: **company@mail.com** e senha **company**\
+Como exemplo iremos utilizar um usuário: **company**  com email: **company@mail.com** e senha **company**\
 
 Clicando em Account devemos preencher os dados de Email e Password
 ![alt text](http://uploaddeimagens.com.br/images/001/201/435/full/01a.png)
 
 
 Para uso através de comandos o acesso deve ser feito através da rota: http://luizaemapi.azurewebsites.net/v1/authenticate\
-deve-ser realizado um POST contendo em seu cabeçalho:
+deve-se realizar um POST contendo em seu cabeçalho:
 
 >Content-Type: application/x-www-form-urlencoded
 >Accept: text/plain: email={youremail} % password={yourpassword}
@@ -41,11 +41,11 @@ Exemplo:
 São informado dados como:
 - token: valor encriptografado da chave de acesso. 
 - expires: tempo de duração do token em segundos.
-- user: dados do usuario e sua Role/Regra 
+- user: dados do usuário e sua Role/Regra 
    
-Para acesso as rotas é necessário sempre se autenticar.
+Para acesso as rotas deve seprem ser enviado no cabeçalho da requisição o token de autenticar.
 
-Atraves de comandos deve ser indicado no Header/Cabeçalho
+Através de comandos deve ser indicado no Header/Cabeçalho
 ```
 Authorization: Bearer {seutoken}
 ```
@@ -67,7 +67,7 @@ Exemplo:
 luizaemapi.azurewebsites.net/V1/Department
 ```
 
-:warning: Importante : Apenas os usuarios com poderes administrativos poderão fazer uso das rotas POST/PUT/DELETE
+:warning: Importante : Apenas os usuários com poderes administrativos poderão fazer uso das rotas POST/PUT/DELETE
 
 ---
 
@@ -79,11 +79,11 @@ As rotas foram pensadas no sentido de permitir facil acesso mantendo o padrão n
 - v1/employee  - Get/Post/Put/Delete
 - v1/user - Get/Post/Put/Delete
 
-Atravez da documentação de rotas é possivel saber mais detalhes e exemplos de como utiliza-las
+Através da documentação de rotas é possível saber mais detalhes e exemplos de como utiliza-las
 http://luizaemapi.azurewebsites.net/swagger
 
 :warning: Importante :
-Existe um relacionamento de _um para um_ entre Department e Employee, assim ao excluir um Department todos os Employee que fizerem parte daquele Department **também** serão excluido!
+Existe um relacionamento de _um para um_ entre Department e Employee, assim ao excluir um Department todos os Employee que fizerem parte daquele Department **também** serão excluído!
 Obs: **ON DELETE CASCADE**
 
 ---
@@ -99,16 +99,16 @@ Na linguagem C#, fazendo uso:
 - SQL Server 2012
 
 Para testes o projeto está rodando no Clound Azure em uma VM, junto com o Banco de Dados SQL Server.
-Há uma *Integração Continua* entre o *GitHub* e o *Azure*, atravez da Pull Request na branch Master do GitHub.
+Há uma Integração Continua entre o GitHub e o Azure, através da Pull Request na branch Master do GitHub.
 
-Como base de arquiterura o projeto se baseou no modelo DDD (Domain Driven Design *Martin Fowler) ficando separados em 4 projetos:
+Como base de arquitetura o projeto se baseou no modelo DDD (Domain Driven Design *Martin Fowler) ficando separados em 4 projetos:
 
 - 1-API - WEB, RESTFul
 - 2-ApplicationService - Canal de comunicação entre (1-API)->(3-Domain) / (1-API)->(4-Infra)
 - 3-Domain - Onde estão as Entidade e os Contratos entre ApplicationService e Infra
-- 4-Infra - Onde fica o Repositorio e Serviços externos (ex: envio de Email)
+- 4-Infra - Onde fica o Repositório e Serviços externos (ex: envio de Email)
 
-É importante salientar que o conceito de Entidades foi baseado no padrão **Dominio Rico** com o padrão de **Notification** atraves do uso do FluentValidator.
+É importante salientar que o conceito de Entidades foi baseado no padrão **Domínio Rico** com o padrão de **Notification** através do uso do FluentValidator visando facilitar a manutenção e evolução do projeto.
 
 ---
 ### TODO
@@ -117,3 +117,4 @@ Como base de arquiterura o projeto se baseou no modelo DDD (Domain Driven Design
 2 - Melhorar a cobertura de código e testes com ferramentas como OpenCover ou SonarQube\
 3 - Implementar o serviço de envio de E-mail's\
 4 - Logs para Autenticações e Falhas
+5 - Tranduzir o Readme para o idioma Inglês
