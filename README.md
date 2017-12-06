@@ -91,10 +91,10 @@ Como base de arquiterura o projeto se baseou no modelo DDD (Domain Driven Design
 
 É importante salientar que o conceito de Entidades foi baseado no padrão **Dominio Rico** com o padrão de **Notification** atraves do uso do FluentValidator.
 
+---
+### TODO
 
-### To Do
-
-1 - Teste de integração - Apenas foi feito Smoke Tests
-2 - Melhorar a cobertura de código e testes com ferramentas como OpenCover ou SonarQube 
-3 - Implementar o serviço de envio de E-mail's
-4 - Logs para Autenticações e Falhas
+1 - Teste de integração - Apenas foi feito Smoke Tests\
+2 - Melhorar a cobertura de código e testes com ferramentas como OpenCover ou SonarQube\
+3 - Implementar o serviço de envio de E-mail's\
+4 - Logs para Autenticações e Falhas\
