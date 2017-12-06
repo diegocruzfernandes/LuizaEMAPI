@@ -115,7 +115,17 @@ namespace LuizaEM.AppService
             employee.UpdateData(command.FirstName, command.LastName, command.Email, command.DepartmentId, command.BirthDate, command.Active);
                       
             if (employee.IsValid())
+            {
+                if (employee.Department.Id != command.DepartmentId)
+                    employee.Department = _repositoryDepart.Get(command.DepartmentId);
+
                 _repository.Update(employee);
+            }
+              
+
+
+
+               
 
             return employee;
         }

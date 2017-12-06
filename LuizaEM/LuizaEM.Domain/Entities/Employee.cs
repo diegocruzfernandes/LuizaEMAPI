@@ -33,7 +33,7 @@ namespace LuizaEM.Domain.Entities
         public string LastName { get; private set; }
         public string Email { get; private set; }
         public int DepartmentId { get; private set; }
-        public virtual Department Department { get; private set; }
+        public virtual Department Department { get;  set; }
         public DateTime BirthDate { get; private set; }
         public bool Active { get; private set; }
         #endregion
