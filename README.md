@@ -26,11 +26,11 @@ Atravez da rota: luizaemapi.azurewebsites.net/v1/authenticate deve-ser realizado
 Exemplo: 
 >curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: text/plain' -d 'Email=company%40mail.com&Password=company' 'http://luizaemapi.azurewebsites.net/v1/authenticate
 
-![alt text](http://uploaddeimagens.com.br/images/001/201/307/full/01b.jpg)
+![alt text](http://uploaddeimagens.com.br/images/001/201/321/full/01a.jpg)
 
 É esperado no Corpo/Body um JSON com resposta:
 
-![alt text](http://uploaddeimagens.com.br/images/001/201/307/full/01b.jpg)
+![alt text](http://uploaddeimagens.com.br/images/001/201/322/full/01b.jpg)
 
 Nos são informado dados como:
 	- token: valor encriptografado da chave de acesso. 
@@ -40,7 +40,7 @@ Nos são informado dados como:
 Para acesso as rotas é necessário fazer uma autenticação.
 devemos copiar o valor do Token gerado e clicar em 'Authorize'
 
-![alt text](http://uploaddeimagens.com.br/images/001/201/307/full/01b.jpg)
+![alt text](http://uploaddeimagens.com.br/images/001/201/323/original/01c.jpg)
 
 em value: devemos inserir o Token da seguinte maneira
 Bearer {seutoken}
