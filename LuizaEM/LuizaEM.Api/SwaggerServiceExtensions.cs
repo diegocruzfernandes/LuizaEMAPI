@@ -23,7 +23,6 @@ namespace LuizaEM.Api
                 c.SwaggerDoc("v1", new Info { Title = "Luiza Employee Manager", Version = "v1" });
 
             });
-
             return services;
         }
 

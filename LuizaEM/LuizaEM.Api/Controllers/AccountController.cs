@@ -40,8 +40,7 @@ namespace LuizaEM.Api.Controllers
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             };
         }
-
-
+        
         [HttpPost]
         [AllowAnonymous]
         [Route("v1/authenticate")]

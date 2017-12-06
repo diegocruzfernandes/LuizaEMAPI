@@ -59,8 +59,8 @@ namespace LuizaEM.Api
             {
                 options.AddPolicy("Admin", policy => policy.RequireClaim("LuizaEMAPI", "Admin"));
                 options.AddPolicy("User", policy => policy.RequireClaim("LuizaEMAPI", "User"));
-               
-            });            
+
+            });
 
             services.Configure<TokenOptions>(options =>
             {
@@ -68,7 +68,7 @@ namespace LuizaEM.Api
                 options.Audience = AUDIENCE;
                 options.SiniginCredential = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256);
             });
-            
+
 
             //services.AddTransient - new instance
             //services.AddScoped - singleton
@@ -86,20 +86,25 @@ namespace LuizaEM.Api
 
             services.AddTransient<IEmailService, EmailService>();
 
-            services.AddSwaggerDocumentation();           
+            services.AddSwaggerDocumentation();
 
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
-        {           
+        {
             app.UseSwaggerDocumentation();
 
             loggerFactory.AddConsole();
 
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();                
-            }  
+                app.UseDeveloperExceptionPage();
+                Runtime.ConnectionString = Configuration.GetConnectionString("ConnStrLocal");
+            }
+            else
+            {
+                Runtime.ConnectionString = Configuration.GetConnectionString("ConnStr");
+            }
 
             var tokenValidationParameters = new TokenValidationParameters
             {
@@ -135,7 +140,7 @@ namespace LuizaEM.Api
             app.UseMvc();
 
             //Add connections string existent in file appsetting.json
-            Runtime.ConnectionString = Configuration.GetConnectionString("ConnStrLocal");
+
         }
     }
 }
