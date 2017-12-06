@@ -14,12 +14,17 @@ Os serviços estão padronizados nos comando HTTP/REST, assim como seu comandos/
 ---
 
 ### Como Utilizar:
-Primeiro Acesso:
-Utilizaremos como exemplo o Swagger que está diponivel em http://luizaemapi.azurewebsites.net/swagger
-As rotas estão bloqueadas, assim antes de mais nada é necessário adquirir um TOKEN para fazer uso dos serviços existes.\
-Como exemplo iremos utilizar um usuario: **company**  com email: **company@mail.com** e senha **company**
+Primeiro Acesso:\
+Utilizaremos como exemplo o Swagger que está diponivel em http://luizaemapi.azurewebsites.net/swagger\
+As rotas estão bloqueadas, assim antes de mais nada é necessário adquirir um TOKEN para fazer uso dos serviços existentes.\
+Como exemplo iremos utilizar um usuario: **company**  com email: **company@mail.com** e senha **company**\
 
-Atravez da rota: luizaemapi.azurewebsites.net/v1/authenticate deve-ser realizado um POST contendo em seu cabeçalho :
+Clicando em Account devemos preencher os dados de Email e Password
+![alt text](http://uploaddeimagens.com.br/images/001/201/435/full/01a.png)
+
+
+Para uso através de comandos o acesso deve ser feito através da rota: http://luizaemapi.azurewebsites.net/v1/authenticate\
+deve-ser realizado um POST contendo em seu cabeçalho:
 
 >Content-Type: application/x-www-form-urlencoded
 >Accept: text/plain: email={youremail} % password={yourpassword}
@@ -28,8 +33,6 @@ Atravez da rota: luizaemapi.azurewebsites.net/v1/authenticate deve-ser realizado
 Exemplo: 
 >curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Accept: text/plain' -d 'Email=company%40mail.com&Password=company' 'http://luizaemapi.azurewebsites.net/v1/authenticate
 ```
-
-![alt text](http://uploaddeimagens.com.br/images/001/201/435/full/01a.png)
 
 É esperado no Corpo/Body um JSON com resposta:
 
