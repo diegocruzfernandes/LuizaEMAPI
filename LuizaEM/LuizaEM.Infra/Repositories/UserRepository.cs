@@ -27,7 +27,6 @@ namespace LuizaEM.Infra.Repositories
                 {
                     Username = u.Username,
                     Email = u.Email,
-                    //Password = u.Password,
                     Permission = (int)u.Permission,
                     Active = u.Active
                 })
@@ -51,7 +50,6 @@ namespace LuizaEM.Infra.Repositories
                 {
                     Username = u.Username,
                     Email = u.Email,
-                    //Password = u.Password,
                     Permission = (int)u.Permission,
                     Active = u.Active
                 })
