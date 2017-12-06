@@ -4,7 +4,7 @@ V1.0.1
 ### Resumo:
 Está API de serviço tem como objetivo fornecer uma interface para a manutenção e distribuição de dados referente aos empregados(Employee).
 O serviço está disponivel nas nuvems pelo link [luizaemapi](http://luizaemapi.azurewebsites.net "Luiza EM - API - Azure - Clound")
-Os serviçõs estão padronizados nos comando HTTP/REST, assim como seu comandos/verboz de envios: GET, POST, PUT e DELETE, como em códigos de retorno (HTTP Status Code): 200 Ok, 204 No Content, 403 Forbidden, etc..
+Os serviçõs estão padronizados nos comando HTTP/REST, assim como seu comandos/verbos de envios: GET, POST, PUT e DELETE, como em códigos de retorno (HTTP Status Code): 200 Ok, 204 No Content, 403 Forbidden, etc..
 As rotas estão protegidas pelo padrão OAuth 2, não permitindo seu uso se autorização.
 
 ### Como Utilizar:
@@ -12,7 +12,7 @@ Primeiro Acesso:
 Utilizaremos como exemplo o Swagger que está diponivel em http://luizaemapi.azurewebsites.net/swagger
 
 As rotas estão bloqueadas, assim antes de mais nada é necessário adquirir um TOKEN para fazer uso dos serviços existes.
-Como exemplo iremos utilizar um usuario: 'company' com email: 'company@mail.com' e senha 'company'
+Como exemplo iremos utilizar um usuario: <span style="color:orange;">'company'</span>  com email: <span style="color:orange;">'company@mail.com'</span> e senha <span style="color:orange;">'company'</span>
 
 Atravez da rota: luizaemapi.azurewebsites.net/v1/authenticate deve-ser realizado um POST contendo em seu cabeçado :
 Content-Type: application/x-www-form-urlencoded
