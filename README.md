@@ -43,18 +43,31 @@ São informado dados como:
 - expires: tempo de duração do token em segundos.
 - user: dados do usuario e sua Role/Regra 
    
-Para acesso as rotas é necessário fazer uma autenticação.
-devemos copiar o valor do Token gerado e clicar em 'Authorize'\
-em value: devemos inserir o Token da seguinte maneira
+Para acesso as rotas é necessário sempre se autenticar.
+
+Atraves de comandos deve ser indicado no Header/Cabeçalho
+```
+Authorization: Bearer {seutoken}
+```
+
+Através do Swagger deve-se clicar em 'Authorize'\
+No campo **value:** devemos inserir o Token da seguinte maneira\
+```
 *Bearer {seutoken}*
+```
 em seguida clicar em Authorize.
-neste momento o Swagger ira inserrir a cada requisição o token atual.
+
+![alt text](http://uploaddeimagens.com.br/images/001/201/439/full/01c.png)
+
+Neste momento o Swagger ira inserir a cada requisição o token atual.
 
 Para testarmos podemos acessar um dos link's 
 ```
 Exemplo:
 luizaemapi.azurewebsites.net/V1/Department
 ```
+
+:warning: Importante : Apenas os usuarios com poderes administrativos poderão fazer uso das rotas POST/PUT/DELETE
 
 ---
 
