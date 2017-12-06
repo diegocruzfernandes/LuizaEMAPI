@@ -9,9 +9,6 @@ namespace LuizaEM.Domain.Shared
     public enum EPermission
     {
         Admin = 0,
-        Maintenace = 1,
-        Manager = 2,
-        Default = 3,
-        Guest = 4
+        User = 1
     }
 }

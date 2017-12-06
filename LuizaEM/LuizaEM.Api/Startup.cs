@@ -10,7 +10,6 @@ using LuizaEM.Infra.Repositories;
 using LuizaEM.Domain.Services;
 using LuizaEM.AppService;
 using System.Text;
-using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.Extensions.Configuration;
 using LuizaEM.Domain.Shared;
 using Microsoft.AspNetCore.Authorization;
@@ -44,7 +43,6 @@ namespace LuizaEM.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-
             //Block all Routers
             services.AddMvc(config =>
             {
@@ -84,8 +82,7 @@ namespace LuizaEM.Api
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
             services.AddTransient<IEmployeeAppService, EmployeeAppService>();
 
-            services.AddSwaggerDocumentation();
-           
+            services.AddSwaggerDocumentation();           
 
         }
 

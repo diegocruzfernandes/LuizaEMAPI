@@ -18,8 +18,7 @@ namespace LuizaEM.Infra.Repositories
         {
             _context = context;
         }
-
-
+        
         public IEnumerable<UserCommand> Get()
         {
             return _context

@@ -10,6 +10,7 @@ namespace LuizaEM.Domain.Entities
 {
     public class User : Notifiable
     {
+        #region Contructor
         protected User() { }
 
         public User(int id, string username, string email, string password, EPermission permission, bool active)
@@ -25,14 +26,18 @@ namespace LuizaEM.Domain.Entities
 
             Password = ValidationPassword.Encrypt(password);
         }
+        #endregion
 
+        #region Attribute
         public int Id { get; private set; }
         public string Username { get; private set; } 
         public string Email { get; private set; }
         public string Password { get; private set; }
         public EPermission Permission { get; private set; }
         public bool Active { get; private set; }
+        #endregion
 
+        #region Methods
         public bool Authenticate(string email, string password)
         {
             if (Email == email && Password == ValidationPassword.Encrypt(password))
@@ -85,6 +90,7 @@ namespace LuizaEM.Domain.Entities
                 .HasMaxLenght(x => x.Password, 60, "O Password não pode ser maio que 60 caracteres")
                 .IsNotNull(Permission, "A permissão não pode ser nula ou vazia");
         }
+        #endregion
     }
 
 }

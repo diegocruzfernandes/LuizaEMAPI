@@ -6,8 +6,8 @@ namespace LuizaEM.Domain.Repositories
 {
     public interface IDepartmentRepository
     {
-        IEnumerable<DepartmentCommand> Get();
-        IEnumerable<DepartmentCommand> Get(int skip, int take);
+        IEnumerable<Department> Get();
+        IEnumerable<Department> Get(int skip, int take);
         Department Get(int id);
         Department GetByName(string name);
         void Save(Department depart);

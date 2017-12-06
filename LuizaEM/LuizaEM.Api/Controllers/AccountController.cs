@@ -3,6 +3,7 @@ using LuizaEM.Api.Security;
 using LuizaEM.Domain.Commands.UserCommands;
 using LuizaEM.Domain.Entities;
 using LuizaEM.Domain.Services;
+using LuizaEM.Domain.Shared;
 using LuizaEM.Infra.Transactions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -83,7 +84,7 @@ namespace LuizaEM.Api.Controllers
                     name = _user.Username.ToString(),
                     email = _user.Email.ToString(),
                     username = _user.Username.ToString(),
-                    role = _user.Permission.ToString()
+                    role = (EPermission)_user.Permission
                 }
             };
 

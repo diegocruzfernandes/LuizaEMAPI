@@ -3,9 +3,6 @@ using LuizaEM.Domain.Services;
 using LuizaEM.Infra.Transactions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace LuizaEM.Api.Controllers
@@ -21,7 +18,7 @@ namespace LuizaEM.Api.Controllers
 
         [HttpPost]
         [Route("v1/user")]
-        [AllowAnonymous]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserCommand command)
         {
             if (command == null)
@@ -50,6 +47,7 @@ namespace LuizaEM.Api.Controllers
 
         [HttpDelete]
         [Route("v1/user/{id}")]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var result = _service.Delete(id);
@@ -58,6 +56,7 @@ namespace LuizaEM.Api.Controllers
 
         [HttpPut]
         [Route("v1/user")]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Update([FromBody] EditUserCommand command)
         {
             var result = _service.Update(command);
@@ -65,7 +64,7 @@ namespace LuizaEM.Api.Controllers
         }
 
         [HttpGet]
-        [Route("v1/user/{id}/reset")]
+        [Route("v1/user/{id}/resetpass")]
         public async Task<IActionResult> ResetPassword(int id)
         {
             var result = _service.ResetPassword(id);

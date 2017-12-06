@@ -63,6 +63,7 @@
     <Compile Include="Repositories\IEmployeeRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Services\IDepartmentAppService.cs" />
+    <Compile Include="Services\IEmailService.cs" />
     <Compile Include="Services\IEmployeeAppService.cs" />
     <Compile Include="Services\IUserAppService.cs" />
     <Compile Include="Shared\EPermission.cs" />

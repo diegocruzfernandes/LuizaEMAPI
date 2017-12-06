@@ -12,8 +12,7 @@ using System.Threading.Tasks;
 namespace LuizaEM.Infra.Repositories
 {
     public class EmployeeRepository : IEmployeeRepository
-    {
-        //video 14 - 6:30min
+    {     
         private readonly DataContext _context;
 
         public EmployeeRepository(DataContext context)
@@ -85,7 +84,6 @@ namespace LuizaEM.Infra.Repositories
         public void Save(Employee employee)
         {
             _context.Employees.Add(employee);
-
         }
 
         public void Update(Employee employee)

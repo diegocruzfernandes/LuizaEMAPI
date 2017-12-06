@@ -10,6 +10,7 @@ namespace LuizaEM.Domain.Entities
 {
     public class Employee : Notifiable
     {
+        #region Contructor
         protected Employee() { }
 
         public Employee(int id, string firstName, string lastName, string email, int departmentId, DateTime birthDate, bool active)
@@ -24,7 +25,9 @@ namespace LuizaEM.Domain.Entities
 
             Validate();
         }
+        #endregion
 
+        #region Attribute
         public int Id { get; private set; }
         public string FirstName { get; private set; }
         public string LastName { get; private set; }
@@ -33,7 +36,9 @@ namespace LuizaEM.Domain.Entities
         public virtual Department Department { get; private set; }
         public DateTime BirthDate { get; private set; }
         public bool Active { get; private set; }
+        #endregion
 
+        #region Methods
         public string FullName()
         {
             return $"{FirstName} {LastName}";
@@ -68,9 +73,8 @@ namespace LuizaEM.Domain.Entities
                 .HasMaxLenght(x => x.Email, 60, "O nome não pode ser maior que 60 caracteres")
                 .IsEmail(x => x.Email, "E-mail no formato inválido")
                 
-                .IsGreaterThan(x => x.BirthDate, new DateTime(), "Data inválid");               
-
+                .IsGreaterThan(x => x.BirthDate, new DateTime(), "Data inválid");
         }
-
+        #endregion
     }
 }
