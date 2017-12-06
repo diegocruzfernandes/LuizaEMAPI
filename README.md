@@ -8,8 +8,8 @@
 
 Está API de serviço tem como objetivo fornecer uma interface para a manutenção e distribuição de dados referente aos empregados(Employee).
 O serviço está disponivel nas nuvems pelo link [luizaemapi](http://luizaemapi.azurewebsites.net "Luiza EM - API - Azure - Clound")
-Os serviçõs estão padronizados nos comando HTTP/REST, assim como seu comandos/verbos de envios: GET, POST, PUT e DELETE, como em códigos de retorno (HTTP Status Code): 200 Ok, 204 No Content, 403 Forbidden, etc..\
-:warning: Importante : As rotas estão protegidas pelo padrão OAuth 2, não permitindo seu uso sem autorização.
+Os serviços estão padronizados nos comando HTTP/REST, assim como seu comandos/verbos de envios: GET, POST, PUT e DELETE bem como os códigos de retorno (HTTP Status Code): 200 Ok, 204 No Content, 403 Forbidden, etc..\
+:warning: Importante : As rotas estão protegidas pelo padrão OAuth 2 e não permite seu uso sem autorização.
 
 ---
 
@@ -82,7 +82,7 @@ Na linguagem C#, fazendo uso:
 - AspNetCore.JwtBearer 1.1.3
 - SQL Server 2012
 
-Para testes o projeto está rodando no Clound Azure em uma VM, junto com o Bando de Dados SQL Server.
+Para testes o projeto está rodando no Clound Azure em uma VM, junto com o Banco de Dados SQL Server.
 Há uma *Integração Continua* entre o *GitHub* e o *Azure*, atravez da Pull Request na branch Master do GitHub.
 
 Como base de arquiterura o projeto se baseou no modelo DDD (Domain Driven Design *Martin Fowler) ficando separados em 4 projetos:
@@ -100,4 +100,4 @@ Como base de arquiterura o projeto se baseou no modelo DDD (Domain Driven Design
 1 - Teste de integração - Apenas foi feito Smoke Tests\
 2 - Melhorar a cobertura de código e testes com ferramentas como OpenCover ou SonarQube\
 3 - Implementar o serviço de envio de E-mail's\
-4 - Logs para Autenticações e Falhas\
+4 - Logs para Autenticações e Falhas
