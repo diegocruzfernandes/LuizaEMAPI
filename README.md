@@ -53,7 +53,7 @@ Authorization: Bearer {seutoken}
 Através do Swagger deve-se clicar em 'Authorize'\
 No campo **value:** devemos inserir o Token da seguinte maneira\
 ```
-*Bearer {seutoken}*
+Bearer {seutoken}
 ```
 em seguida clicar em Authorize.
 
