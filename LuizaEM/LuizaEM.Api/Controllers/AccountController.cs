@@ -44,7 +44,7 @@ namespace LuizaEM.Api.Controllers
         [AllowAnonymous]
         [Route("v1/authenticate")]
         public async Task<IActionResult> Post([FromForm] AuthenticateUserCommand command)
-        {
+        { 
             if (command == null)
                 return await Response(null, new List<Notification> { new Notification("User", "Usuário ou senha inválidos") });
 
@@ -52,12 +52,13 @@ namespace LuizaEM.Api.Controllers
             if (identity == null)
                 return await Response(null, new List<Notification> { new Notification("User", "Usuário ou senha inválidos") });
 
+            EPermission permission = (EPermission)_user.Permission;
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.UniqueName, command.Email),
-                new Claim(JwtRegisteredClaimNames.NameId, command.Email),
-                new Claim(JwtRegisteredClaimNames.Email, command.Email),
-                new Claim(JwtRegisteredClaimNames.Sub, command.Email),
+                new Claim(JwtRegisteredClaimNames.UniqueName, _user.Username),
+                new Claim(JwtRegisteredClaimNames.NameId, _user.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, _user.Email),
+                new Claim(JwtRegisteredClaimNames.Sub, permission.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti, await _tokenOptions.JtiGenerator()),
                 new Claim(JwtRegisteredClaimNames.Iat, ToUnixEpochDate(_tokenOptions.IssuedAt).ToString(), ClaimValueTypes.Integer64),
                 identity.FindFirst("LuizaEMAPI")
@@ -72,7 +73,7 @@ namespace LuizaEM.Api.Controllers
                 signingCredentials: _tokenOptions.SiniginCredential);
 
             var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
-            EPermission permission = (EPermission)_user.Permission;
+           
             var response = new
             {
                 token = encodedJwt,
@@ -89,7 +90,7 @@ namespace LuizaEM.Api.Controllers
             var json = JsonConvert.SerializeObject(response, _serializerSettings);
             return new OkObjectResult(json);
         }
-
+        
         #region //Authenticate Methods
         private static void ThrowIfInvalidOptions(TokenOptions options)
         {
@@ -120,12 +121,13 @@ namespace LuizaEM.Api.Controllers
 
             _user = user;
 
+            EPermission permission = (EPermission)_user.Permission;
+
             return Task.FromResult(new ClaimsIdentity(
                 new GenericIdentity(user.Email, "Token"),
                 new[]
                 {
-                    new Claim("LuizaEMAPI", "Admin"),
-                    new Claim("LuizaEMAPI", "User")                    
+                    new Claim("LuizaEMAPI", permission.ToString())    
                 }));
         }       
         #endregion

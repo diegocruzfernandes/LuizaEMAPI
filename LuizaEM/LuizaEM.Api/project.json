@@ -24,9 +24,6 @@
         "LuizaEM.AppService": {
           "target": "project"
         },
-        "LuizaEM.Domain": {
-          "target": "project"
-        },
         "LuizaEM.Infra": {
           "target": "project"
         }

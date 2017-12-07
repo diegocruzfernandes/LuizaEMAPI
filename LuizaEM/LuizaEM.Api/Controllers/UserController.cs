@@ -29,8 +29,8 @@ namespace LuizaEM.Api.Controllers
         }
 
         [HttpGet]
-        [Route("v1/user")]
-        public async Task<IActionResult> Get()
+        [Route("v1/users")]
+        public async Task<IActionResult> Get([FromQuery(Name = "full")]bool full)
         {
             var result = _service.Get();
             return await ResponseList(result);
