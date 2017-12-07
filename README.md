@@ -15,7 +15,7 @@ Os serviços estão padronizados nos comando HTTP/REST, assim como seu comandos/
 
 ### Como Utilizar:
 Primeiro Acesso:\
-Utilizaremos como exemplo o Swagger que está diponível em http://luizaemapi.azurewebsites.net/swagger\
+Utilizaremos como exemplo o Swagger que está diponível em http://luizaemapi.azurewebsites.net/swagger
 As rotas estão bloqueadas, assim antes de mais nada é necessário adquirir um TOKEN para fazer uso dos serviços existentes.\
 Como exemplo iremos utilizar um usuário: **company**  com email: **company@mail.com** e senha **company**
 
@@ -23,7 +23,7 @@ Clicando em Account devemos preencher os dados de Email e Password
 ![alt text](http://uploaddeimagens.com.br/images/001/201/435/full/01a.png)
 
 
-Para uso através de comandos o acesso deve ser feito através da rota: http://luizaemapi.azurewebsites.net/v1/authenticate\
+Para uso através de comandos o acesso deve ser feito através da rota: http://luizaemapi.azurewebsites.net/v1/authenticate
 deve-se realizar um POST contendo em seu cabeçalho:
 
 >Content-Type: application/x-www-form-urlencoded
