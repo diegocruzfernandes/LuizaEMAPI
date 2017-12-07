@@ -1,5 +1,5 @@
 # Luiza Employee Manager - API
- Autor: Diego Fernandes  - Versão: 1.0.1 (05/12/2017)\
+ Autor: Diego Fernandes  - Versão: 1.0.3 (07/12/2017)\
  contatos: diegocruzfernandes@hotmail.com
 
 ---
@@ -7,7 +7,7 @@
 ####  Resumo:
 
 Está API de serviço tem como objetivo fornecer uma interface para a manutenção e distribuição de dados referente aos empregados(Employee).
-O serviço está disponível nas nuvens pelo link [luizaemapi](http://luizaemapi.azurewebsites.net "Luiza EM - API - Azure - Clound")
+O serviço está disponível nas nuvens pelo link [luizaemapi](http://luizaemapi.azurewebsites.net "Luiza EM - API - Azure - Clound").
 Os serviços estão padronizados nos comando HTTP/REST, assim como seu comandos/verbos de envios: GET, POST, PUT e DELETE bem como os códigos de retorno (HTTP Status Code): 200 Ok, 204 No Content, 403 Forbidden, etc..\
 :warning: Importante : As rotas estão protegidas pelo padrão OAuth 2 e não permite seu uso sem autorização.
 
@@ -15,15 +15,15 @@ Os serviços estão padronizados nos comando HTTP/REST, assim como seu comandos/
 
 ### Como Utilizar:
 Primeiro Acesso:\
-Utilizaremos como exemplo o Swagger que está diponível em http://luizaemapi.azurewebsites.net/swagger\
+Utilizaremos como exemplo o Swagger que está diponível em http://luizaemapi.azurewebsites.net/swagger
 As rotas estão bloqueadas, assim antes de mais nada é necessário adquirir um TOKEN para fazer uso dos serviços existentes.\
-Como exemplo iremos utilizar um usuário: **company**  com email: **company@mail.com** e senha **company**\
+Como exemplo iremos utilizar um usuário: **company**  com email: **company@mail.com** e senha **company**
 
 Clicando em Account devemos preencher os dados de Email e Password
 ![alt text](http://uploaddeimagens.com.br/images/001/201/435/full/01a.png)
 
 
-Para uso através de comandos o acesso deve ser feito através da rota: http://luizaemapi.azurewebsites.net/v1/authenticate\
+Para uso através de comandos o acesso deve ser feito através da rota: http://luizaemapi.azurewebsites.net/v1/authenticate
 deve-se realizar um POST contendo em seu cabeçalho:
 
 >Content-Type: application/x-www-form-urlencoded
@@ -51,11 +51,11 @@ Authorization: Bearer {seutoken}
 ```
 
 Através do Swagger deve-se clicar em 'Authorize'\
-No campo **value:** devemos inserir o Token da seguinte maneira\
+No campo **value:** devemos inserir o Token da seguinte maneira
 ```
-*Bearer {seutoken}*
+Bearer {seutoken}
 ```
-em seguida clicar em Authorize.
+em seguida clicar em **Authorize**.
 
 ![alt text](http://uploaddeimagens.com.br/images/001/201/439/full/01c.png)
 
@@ -73,7 +73,7 @@ luizaemapi.azurewebsites.net/V1/Department
 
 ### Rotas
 
-As rotas foram pensadas no sentido de permitir facil acesso mantendo o padrão nominal
+As rotas foram pensadas no sentido de permitir fácil acesso mantendo o padrão nominal
 
 - v1/department - Get/Post/Put/Delete
 - v1/employee  - Get/Post/Put/Delete
@@ -101,7 +101,7 @@ Na linguagem C#, fazendo uso:
 Para testes o projeto está rodando no Clound Azure em uma VM, junto com o Banco de Dados SQL Server.
 Há uma Integração Continua entre o GitHub e o Azure, através da Pull Request na branch Master do GitHub.
 
-Como base de arquitetura o projeto se baseou no modelo DDD (Domain Driven Design *Martin Fowler) ficando separados em 4 projetos:
+Como base de arquitetura o projeto se baseou no modelo DDD (Domain Driven Design *Eric Evans) tendo seu desenvolvimento com foco no domínio. O Programa ficou separado em 4 projetos:
 
 - 1-API - WEB, RESTFul
 - 2-ApplicationService - Canal de comunicação entre (1-API)->(3-Domain) / (1-API)->(4-Infra)
