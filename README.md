@@ -51,11 +51,11 @@ Authorization: Bearer {seutoken}
 ```
 
 Através do Swagger deve-se clicar em 'Authorize'\
-No campo **value:** devemos inserir o Token da seguinte maneira\
+No campo **value:** devemos inserir o Token da seguinte maneira
 ```
 Bearer {seutoken}
 ```
-em seguida clicar em Authorize.
+em seguida clicar em **Authorize**.
 
 ![alt text](http://uploaddeimagens.com.br/images/001/201/439/full/01c.png)
 
@@ -73,7 +73,7 @@ luizaemapi.azurewebsites.net/V1/Department
 
 ### Rotas
 
-As rotas foram pensadas no sentido de permitir facil acesso mantendo o padrão nominal
+As rotas foram pensadas no sentido de permitir fácil acesso mantendo o padrão nominal
 
 - v1/department - Get/Post/Put/Delete
 - v1/employee  - Get/Post/Put/Delete
@@ -101,7 +101,7 @@ Na linguagem C#, fazendo uso:
 Para testes o projeto está rodando no Clound Azure em uma VM, junto com o Banco de Dados SQL Server.
 Há uma Integração Continua entre o GitHub e o Azure, através da Pull Request na branch Master do GitHub.
 
-Como base de arquitetura o projeto se baseou no modelo DDD (Domain Driven Design *Martin Fowler) ficando separados em 4 projetos:
+Como base de arquitetura o projeto se baseou no modelo DDD (Domain Driven Design *Eric Evans) tendo seu desenvolvimento com foco no domínio. O Programa ficou separado em 4 projetos:
 
 - 1-API - WEB, RESTFul
 - 2-ApplicationService - Canal de comunicação entre (1-API)->(3-Domain) / (1-API)->(4-Infra)
